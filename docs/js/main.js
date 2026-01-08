@@ -72,50 +72,61 @@ function formatRelativeDate(dateString) {
  */
 function updateUI(release) {
   const versionInfo = document.getElementById('version-info');
-  const downloadBtn = document.getElementById('download-btn');
-  const downloadFilename = document.getElementById('download-filename');
-  const downloadSize = document.getElementById('download-size');
-  
+  const versionInfoDownload = document.getElementById('version-info-download');
+
+  // Installer elements
+  const installerBtn = document.getElementById('installer-btn');
+  const installerFilename = document.getElementById('installer-filename');
+  const installerSize = document.getElementById('installer-size');
+
+  // Portable elements
+  const portableBtn = document.getElementById('portable-btn');
+  const portableFilename = document.getElementById('portable-filename');
+  const portableSize = document.getElementById('portable-size');
+
   if (!release) {
     // No release found - use placeholder
-    if (versionInfo) {
-      versionInfo.textContent = 'First release coming soon!';
-    }
-    if (downloadBtn) {
-      downloadBtn.href = `https://github.com/${GITHUB_REPO}/releases`;
-      downloadBtn.textContent = 'View Releases';
-    }
+    const placeholderText = 'First release coming soon!';
+    if (versionInfo) versionInfo.textContent = placeholderText;
+    if (versionInfoDownload) versionInfoDownload.textContent = placeholderText;
     return;
   }
-  
-  // Find the Windows ZIP asset (guard against empty assets array)
+
+  // Find assets (guard against empty assets array)
   const assets = release.assets || [];
-  const windowsAsset = assets.find(asset =>
-    asset.name.includes('win32') ||
-    asset.name.includes('windows') ||
-    asset.name.endsWith('.zip')
-  ) || assets[0] || null;
-  
-  // Update version info
-  if (versionInfo) {
-    const relativeDate = formatRelativeDate(release.published_at);
-    versionInfo.textContent = `${release.tag_name} • Released ${relativeDate}`;
+
+  // Find installer (.exe Setup file)
+  const installerAsset = assets.find(asset =>
+    asset.name.endsWith('.exe') && asset.name.includes('Setup')
+  ) || null;
+
+  // Find portable (.zip file)
+  const portableAsset = assets.find(asset =>
+    asset.name.endsWith('.zip') && asset.name.includes('portable')
+  ) || assets.find(asset => asset.name.endsWith('.zip')) || null;
+
+  // Update version info (hero and download section)
+  const relativeDate = formatRelativeDate(release.published_at);
+  const versionText = `${release.tag_name} • Released ${relativeDate}`;
+  if (versionInfo) versionInfo.textContent = versionText;
+  if (versionInfoDownload) versionInfoDownload.textContent = versionText;
+
+  // Update installer download
+  if (installerAsset) {
+    if (installerBtn) installerBtn.href = installerAsset.browser_download_url;
+    if (installerFilename) installerFilename.textContent = installerAsset.name;
+    if (installerSize) installerSize.textContent = formatFileSize(installerAsset.size);
+  } else if (installerBtn) {
+    installerBtn.href = release.html_url;
   }
-  
-  // Update download button
-  if (downloadBtn && windowsAsset) {
-    downloadBtn.href = windowsAsset.browser_download_url;
-  } else if (downloadBtn) {
-    downloadBtn.href = release.html_url;
-  }
-  
-  // Update download details
-  if (downloadFilename && windowsAsset) {
-    downloadFilename.textContent = windowsAsset.name;
-  }
-  
-  if (downloadSize && windowsAsset) {
-    downloadSize.textContent = formatFileSize(windowsAsset.size);
+
+  // Update portable download
+  if (portableAsset) {
+    if (portableBtn) portableBtn.href = portableAsset.browser_download_url;
+    if (portableFilename) portableFilename.textContent = portableAsset.name;
+    if (portableSize) portableSize.textContent = formatFileSize(portableAsset.size);
+  } else if (portableBtn) {
+    portableBtn.href = release.html_url;
   }
 }
 

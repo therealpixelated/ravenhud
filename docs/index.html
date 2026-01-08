@@ -192,24 +192,49 @@
     <!-- Download Section -->
     <section id="download" class="download" aria-labelledby="download-heading">
       <h2 id="download-heading">Download</h2>
-      <div class="download-card">
-        <div class="download-info">
-          <div class="platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-            <span>Windows</span>
+      <div class="download-options">
+        <!-- Installer Option (Recommended) -->
+        <div class="download-card download-card-primary">
+          <div class="download-badge">Recommended</div>
+          <div class="download-info">
+            <div class="platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+              <span>Windows Installer</span>
+            </div>
+            <div class="download-details">
+              <p class="filename" id="installer-filename">RavenHUD-Setup.exe</p>
+              <p class="filesize" id="installer-size">~80 MB</p>
+            </div>
           </div>
-          <div class="download-details">
-            <p class="filename" id="download-filename">RavenHUD-win32-x64.zip</p>
-            <p class="filesize" id="download-size">~80 MB</p>
-          </div>
+          <a href="https://github.com/therealpixelated/ravenhud/releases" class="btn btn-primary btn-large" id="installer-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Installer
+          </a>
+          <p class="download-feature">Includes automatic updates</p>
         </div>
-        <a href="https://github.com/therealpixelated/ravenhud/releases" class="btn btn-primary btn-large" id="download-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          Download Latest
-        </a>
+
+        <!-- Portable Option -->
+        <div class="download-card download-card-secondary">
+          <div class="download-info">
+            <div class="platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              <span>Portable ZIP</span>
+            </div>
+            <div class="download-details">
+              <p class="filename" id="portable-filename">RavenHUD-portable.zip</p>
+              <p class="filesize" id="portable-size">~80 MB</p>
+            </div>
+          </div>
+          <a href="https://github.com/therealpixelated/ravenhud/releases" class="btn btn-secondary btn-large" id="portable-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download ZIP
+          </a>
+          <p class="download-feature">No installation required</p>
+        </div>
       </div>
+      <p class="version download-version" id="version-info-download">Loading version...</p>
       <p class="download-note">
-        Requires Windows 10 or later. No installation needed - just extract and run.
+        Requires Windows 10 or later. The installer version will automatically download and install updates.
       </p>
     </section>
 
