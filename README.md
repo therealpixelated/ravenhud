@@ -2,9 +2,9 @@
 
 A companion overlay tool for RavenQuest - track cosmetics, trophies, tradepacks, and more.
 
-🌐 **Website:** [https://therealpixelated.github.io/ravenhud](https://therealpixelated.github.io/ravenhud)
+🌐 **Website:** [https://pix-elated.github.io/ravenhud](https://pix-elated.github.io/ravenhud)
 
-📥 **Download:** [Latest Release](https://github.com/therealpixelated/ravenhud/releases/latest)
+📥 **Download:** [Latest Release](https://github.com/pix-elated/ravenhud/releases/latest)
 
 ## Features
 
@@ -17,11 +17,11 @@ A companion overlay tool for RavenQuest - track cosmetics, trophies, tradepacks,
 
 ## Screenshots
 
-See the [website](https://therealpixelated.github.io/ravenhud) for animated demos.
+See the [website](https://pix-elated.github.io/ravenhud) for animated demos.
 
 ## Installation
 
-1. Download the latest release from the [Releases page](https://github.com/therealpixelated/ravenhud/releases/latest)
+1. Download the latest release from the [Releases page](https://github.com/pix-elated/ravenhud/releases/latest)
 2. Extract the ZIP file
 3. Run `RavenHUD.exe`
 
