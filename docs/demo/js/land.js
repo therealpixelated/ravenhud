@@ -77,28 +77,15 @@ async function initLandSimulator() {
 function setupEventListeners() {
   console.log('[Land] setupEventListeners called');
 
-  // Land type selector - use event delegation on document for reliability
+  // Land type selector - single delegated listener on document
+  // (removed duplicate direct listener that was causing double grid creation)
   document.addEventListener('change', (e) => {
     if (e.target && e.target.id === 'landTypeSelect') {
-      console.log('[Land] Delegated change event caught for landTypeSelect');
+      console.log('[Land] Change event for landTypeSelect');
       handleLandTypeChange(e);
     }
   });
-  console.log('[Land] Delegated change listener attached to document for #landTypeSelect');
-
-  // Also attach directly to element if it exists
-  const landTypeSelect = document.getElementById('landTypeSelect');
-  if (landTypeSelect) {
-    landTypeSelect.addEventListener('change', (e) => {
-      console.log('[Land] Direct change event on landTypeSelect');
-      // The delegated handler will also fire, so we check if already handled
-      if (!e._landHandled) {
-        e._landHandled = true;
-        handleLandTypeChange(e);
-      }
-    });
-    console.log('[Land] Direct change listener also attached to landTypeSelect');
-  }
+  console.log('[Land] Change listener attached for #landTypeSelect');
 
   // Clear grid button
   const clearGridBtn = document.getElementById('clearGridBtn');
@@ -587,18 +574,3 @@ if (document.readyState === 'loading') {
 } else {
   initLandSimulator();
 }
-
-// Also initialize when Land tab is clicked (backup for race conditions)
-document.addEventListener('click', (e) => {
-  if (e.target?.id === 'land-tab' || e.target?.closest('#land-tab')) {
-    // Small delay to ensure tab content is visible
-    setTimeout(() => {
-      const select = document.getElementById('landTypeSelect');
-      if (select && !select._landListenerAttached) {
-        console.log('[Land] Attaching listener via tab click backup');
-        select._landListenerAttached = true;
-        select.addEventListener('change', handleLandTypeChange);
-      }
-    }, 100);
-  }
-});
