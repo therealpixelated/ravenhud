@@ -366,18 +366,20 @@ class LandOptimized {
 
     // Determine the "size" for color scheme - use the largest component
     let size = 'mixed';
-    if (counts['3x3'] > 0 && counts['2x2'] === 0 && counts['1x1'] === 0) size = '3x3';
-    else if (counts['2x2'] > 0 && counts['3x3'] === 0 && counts['1x1'] === 0) size = '2x2';
-    else if (counts['1x1'] > 0 && counts['3x3'] === 0 && counts['2x2'] === 0) size = '1x1';
+    if ((counts['4x4'] || 0) > 0 && counts['3x3'] === 0 && counts['2x2'] === 0 && counts['1x1'] === 0) size = '4x4';
+    else if (counts['3x3'] > 0 && (counts['4x4'] || 0) === 0 && counts['2x2'] === 0 && counts['1x1'] === 0) size = '3x3';
+    else if (counts['2x2'] > 0 && (counts['4x4'] || 0) === 0 && counts['3x3'] === 0 && counts['1x1'] === 0) size = '2x2';
+    else if (counts['1x1'] > 0 && (counts['4x4'] || 0) === 0 && counts['3x3'] === 0 && counts['2x2'] === 0) size = '1x1';
 
     // Build name from counts
     const parts = [];
+    if ((counts['4x4'] || 0) > 0) parts.push(`${counts['4x4']}× 4×4`);
     if (counts['3x3'] > 0) parts.push(`${counts['3x3']}× 3×3`);
     if (counts['2x2'] > 0) parts.push(`${counts['2x2']}× 2×2`);
     if (counts['1x1'] > 0) parts.push(`${counts['1x1']}× 1×1`);
     const name = parts.join(' + ');
 
-    const totalItems = (counts['3x3'] || 0) + (counts['2x2'] || 0) + (counts['1x1'] || 0);
+    const totalItems = (counts['4x4'] || 0) + (counts['3x3'] || 0) + (counts['2x2'] || 0) + (counts['1x1'] || 0);
     const tilesUsed = layout.totalTiles || this.landData.tiles.length;
     const totalTiles = this.landData.tiles.length;
 
@@ -404,6 +406,8 @@ class LandOptimized {
 
     // Build a simple visual representation of the layout mix
     const countDisplay = [];
+    if ((counts['4x4'] || 0) > 0)
+      countDisplay.push(`<span style="color: #10B981;">${counts['4x4']}× 4×4</span>`);
     if (counts['3x3'] > 0)
       countDisplay.push(`<span style="color: #A855F7;">${counts['3x3']}× 3×3</span>`);
     if (counts['2x2'] > 0)
@@ -441,6 +445,7 @@ class LandOptimized {
       '1x1': null,
       '2x2': null,
       '3x3': null,
+      '4x4': null,
       // Additional categories (shown with "More" button)
       maxTiles: null,
       balanced: null
@@ -473,13 +478,20 @@ class LandOptimized {
         }
       }
 
+      // Track best for 4x4 (most 4x4 items)
+      if (!bestFor['4x4'] || (counts['4x4'] || 0) > (bestFor['4x4'].counts['4x4'] || 0)) {
+        if ((counts['4x4'] || 0) > 0) {
+          bestFor['4x4'] = { ...layout, housePosition: pos, houseRotation: rot };
+        }
+      }
+
       // Track best for maximum total tiles (highest production)
       if (!bestFor.maxTiles || totalTiles > bestFor.maxTiles.totalTiles) {
         bestFor.maxTiles = { ...layout, housePosition: pos, houseRotation: rot };
       }
 
-      // Track best for balanced mix (all 3 sizes present, prioritize total tiles)
-      const hasAllSizes = counts['1x1'] > 0 && counts['2x2'] > 0 && counts['3x3'] > 0;
+      // Track best for balanced mix (all 4 sizes present, prioritize total tiles)
+      const hasAllSizes = counts['1x1'] > 0 && counts['2x2'] > 0 && counts['3x3'] > 0 && (counts['4x4'] || 0) > 0;
       if (hasAllSizes) {
         if (!bestFor.balanced || totalTiles > bestFor.balanced.totalTiles) {
           bestFor.balanced = { ...layout, housePosition: pos, houseRotation: rot };
@@ -534,19 +546,30 @@ class LandOptimized {
       );
     }
 
+    if (bestPositions['4x4']) {
+      primaryCards.push(
+        this.renderHousePositionCard('4x4', bestPositions['4x4'], {
+          label: 'Best for 4×4 Crops',
+          color: '#10B981',
+          description: `Max ${bestPositions['4x4'].counts['4x4']} extra-large crops`
+        })
+      );
+    }
+
     // Build cards for additional positions (shown when "More" is clicked)
     const additionalCards = [];
 
     if (bestPositions.maxTiles) {
       const counts = bestPositions.maxTiles.counts;
       const breakdown = [];
+      if (counts['4x4'] > 0) breakdown.push(`${counts['4x4']}×4×4`);
       if (counts['3x3'] > 0) breakdown.push(`${counts['3x3']}×3×3`);
       if (counts['2x2'] > 0) breakdown.push(`${counts['2x2']}×2×2`);
       if (counts['1x1'] > 0) breakdown.push(`${counts['1x1']}×1×1`);
       additionalCards.push(
         this.renderHousePositionCard('maxTiles', bestPositions.maxTiles, {
           label: 'Max Total Tiles',
-          color: '#10B981',
+          color: '#6366F1',
           description: `${bestPositions.maxTiles.totalTiles} tiles (${breakdown.join(' + ')})`
         })
       );
@@ -558,7 +581,7 @@ class LandOptimized {
         this.renderHousePositionCard('balanced', bestPositions.balanced, {
           label: 'Balanced Mix',
           color: '#F59E0B',
-          description: `${counts['3x3']}×3×3 + ${counts['2x2']}×2×2 + ${counts['1x1']}×1×1`
+          description: `${counts['4x4'] || 0}×4×4 + ${counts['3x3']}×3×3 + ${counts['2x2']}×2×2 + ${counts['1x1']}×1×1`
         })
       );
     }
@@ -844,6 +867,8 @@ class LandOptimized {
 
     // Build crop count display
     const countDisplay = [];
+    if ((counts['4x4'] || 0) > 0)
+      countDisplay.push(`<span style="color: #10B981;">${counts['4x4']}× 4×4</span>`);
     if (counts['3x3'] > 0)
       countDisplay.push(`<span style="color: #A855F7;">${counts['3x3']}× 3×3</span>`);
     if (counts['2x2'] > 0)
@@ -885,18 +910,20 @@ class LandOptimized {
 
     // Determine the "size" for color scheme
     let size = 'mixed';
-    if (counts['3x3'] > 0 && counts['2x2'] === 0 && counts['1x1'] === 0) size = '3x3';
-    else if (counts['2x2'] > 0 && counts['3x3'] === 0 && counts['1x1'] === 0) size = '2x2';
-    else if (counts['1x1'] > 0 && counts['3x3'] === 0 && counts['2x2'] === 0) size = '1x1';
+    if ((counts['4x4'] || 0) > 0 && counts['3x3'] === 0 && counts['2x2'] === 0 && counts['1x1'] === 0) size = '4x4';
+    else if (counts['3x3'] > 0 && (counts['4x4'] || 0) === 0 && counts['2x2'] === 0 && counts['1x1'] === 0) size = '3x3';
+    else if (counts['2x2'] > 0 && (counts['4x4'] || 0) === 0 && counts['3x3'] === 0 && counts['1x1'] === 0) size = '2x2';
+    else if (counts['1x1'] > 0 && (counts['4x4'] || 0) === 0 && counts['3x3'] === 0 && counts['2x2'] === 0) size = '1x1';
 
     // Build name from counts
     const parts = [];
+    if ((counts['4x4'] || 0) > 0) parts.push(`${counts['4x4']}× 4×4`);
     if (counts['3x3'] > 0) parts.push(`${counts['3x3']}× 3×3`);
     if (counts['2x2'] > 0) parts.push(`${counts['2x2']}× 2×2`);
     if (counts['1x1'] > 0) parts.push(`${counts['1x1']}× 1×1`);
     const name = parts.join(' + ');
 
-    const totalItems = (counts['3x3'] || 0) + (counts['2x2'] || 0) + (counts['1x1'] || 0);
+    const totalItems = (counts['4x4'] || 0) + (counts['3x3'] || 0) + (counts['2x2'] || 0) + (counts['1x1'] || 0);
     const tilesUsed = layout.totalTiles || 0;
     const availableTiles = layout.availableTiles || this.landData.tiles.length;
 
@@ -933,7 +960,8 @@ class LandOptimized {
     const sizeColors = {
       1: { bg: '#FBBF24', border: '#D97706', text: '#000000' },
       2: { bg: '#3B82F6', border: '#2563EB', text: '#FFFFFF' },
-      3: { bg: '#A855F7', border: '#7C3AED', text: '#FFFFFF' }
+      3: { bg: '#A855F7', border: '#7C3AED', text: '#FFFFFF' },
+      4: { bg: '#10B981', border: '#059669', text: '#FFFFFF' }
     };
 
     // Get house tiles at the layout's house position
@@ -985,7 +1013,7 @@ class LandOptimized {
         const h = size * cellSize;
 
         const baseFontSize = Math.max(6, cellSize - 2);
-        const fontSizeMultiplier = { 1: 1, 2: 1.5, 3: 2 };
+        const fontSizeMultiplier = { 1: 1, 2: 1.5, 3: 2, 4: 2.5 };
         const fontSize = baseFontSize * (fontSizeMultiplier[size] || 1);
 
         items += `
@@ -1055,7 +1083,7 @@ class LandOptimized {
 
   /**
    * Get color scheme for layout size
-   * Colorblind-safe palette: Amber (1x1), Blue (2x2), Purple (3x3)
+   * Colorblind-safe palette: Amber (1x1), Blue (2x2), Purple (3x3), Emerald (4x4)
    */
   // eslint-disable-next-line class-methods-use-this
   getLayoutColor(size) {
@@ -1063,6 +1091,7 @@ class LandOptimized {
       '1x1': { bg: 'rgba(251, 191, 36, 0.15)', border: '#FBBF24', accent: '#FBBF24' }, // Amber
       '2x2': { bg: 'rgba(59, 130, 246, 0.15)', border: '#3B82F6', accent: '#3B82F6' }, // Blue
       '3x3': { bg: 'rgba(168, 85, 247, 0.15)', border: '#A855F7', accent: '#A855F7' }, // Purple
+      '4x4': { bg: 'rgba(16, 185, 129, 0.15)', border: '#10B981', accent: '#10B981' }, // Emerald
       mixed: { bg: 'rgba(236, 72, 153, 0.15)', border: '#EC4899', accent: '#EC4899' } // Pink
     };
     return colors[size] || colors.mixed;
@@ -1102,11 +1131,12 @@ class LandOptimized {
     const cellSize = Math.min(12, Math.floor(maxGridWidth / width));
 
     // Colorblind-safe colors for each size
-    // Amber, Blue, Purple are distinguishable across all colorblindness types
+    // Amber, Blue, Purple, Emerald are distinguishable across all colorblindness types
     const sizeColors = {
       1: { bg: '#FBBF24', border: '#D97706', text: '#000000' }, // Amber - black text
       2: { bg: '#3B82F6', border: '#2563EB', text: '#FFFFFF' }, // Blue - white text
-      3: { bg: '#A855F7', border: '#7C3AED', text: '#FFFFFF' } // Purple - white text
+      3: { bg: '#A855F7', border: '#7C3AED', text: '#FFFFFF' }, // Purple - white text
+      4: { bg: '#10B981', border: '#059669', text: '#FFFFFF' } // Emerald - white text
     };
 
     // Get house tiles for display
@@ -1167,7 +1197,7 @@ class LandOptimized {
 
         // Font size scales with item size and cell size
         const baseFontSize = Math.max(6, cellSize - 2);
-        const fontSizeMultiplier = { 1: 1, 2: 1.5, 3: 2 };
+        const fontSizeMultiplier = { 1: 1, 2: 1.5, 3: 2, 4: 2.5 };
         const fontSize = baseFontSize * (fontSizeMultiplier[size] || 1);
 
         items += `

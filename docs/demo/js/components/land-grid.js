@@ -1026,7 +1026,7 @@ class LandGrid {
 
   /**
    * Get color scheme for item size
-   * Colorblind-safe palette: Amber (1x1), Blue (2x2), Purple (3x3)
+   * Colorblind-safe palette: Amber (1x1), Blue (2x2), Purple (3x3), Emerald (4x4)
    */
   // eslint-disable-next-line class-methods-use-this
   getItemColor(width, height) {
@@ -1034,7 +1034,8 @@ class LandGrid {
     const colors = {
       '1x1': { bg: 'rgba(251, 191, 36, 0.25)', border: '#FBBF24' }, // Amber
       '2x2': { bg: 'rgba(59, 130, 246, 0.25)', border: '#3B82F6' }, // Blue
-      '3x3': { bg: 'rgba(168, 85, 247, 0.25)', border: '#A855F7' } // Purple
+      '3x3': { bg: 'rgba(168, 85, 247, 0.25)', border: '#A855F7' }, // Purple
+      '4x4': { bg: 'rgba(16, 185, 129, 0.15)', border: '#10B981' } // Emerald
     };
     return colors[sizeKey] || { bg: 'rgba(90, 62, 27, 0.9)', border: '#5a3e1b' };
   }
