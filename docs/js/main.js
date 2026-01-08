@@ -200,6 +200,136 @@ function initHeaderScroll() {
 }
 
 /**
+ * Feature Lightbox functionality
+ */
+function initFeatureLightbox() {
+  const lightbox = document.getElementById('featureLightbox');
+  if (!lightbox) return;
+
+  const backdrop = lightbox.querySelector('.lightbox-backdrop');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const prevBtn = lightbox.querySelector('.lightbox-prev');
+  const nextBtn = lightbox.querySelector('.lightbox-next');
+  const iconEl = lightbox.querySelector('.lightbox-icon');
+  const titleEl = lightbox.querySelector('.lightbox-title');
+  const imageEl = lightbox.querySelector('.lightbox-image');
+  const descEl = lightbox.querySelector('.lightbox-description');
+  const detailsEl = lightbox.querySelector('.lightbox-details');
+  const navEl = lightbox.querySelector('.lightbox-nav');
+  const counterEl = lightbox.querySelector('.lightbox-counter');
+
+  // Get all feature cards
+  const featureCards = Array.from(document.querySelectorAll('.feature-card[data-feature]'));
+  let currentIndex = 0;
+  let previouslyFocused = null;
+
+  function openLightbox(card) {
+    previouslyFocused = document.activeElement;
+
+    const data = {
+      icon: card.dataset.icon,
+      title: card.dataset.title,
+      image: card.dataset.image,
+      description: card.dataset.description,
+      details: card.dataset.details
+    };
+
+    iconEl.textContent = data.icon;
+    titleEl.textContent = data.title;
+    imageEl.src = data.image;
+    imageEl.alt = `${data.title} demonstration`;
+    descEl.textContent = data.description;
+    detailsEl.textContent = data.details;
+
+    currentIndex = featureCards.indexOf(card);
+    updateNav();
+
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+
+    // Focus close button for accessibility
+    closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+
+    // Return focus to previously focused element
+    if (previouslyFocused) {
+      previouslyFocused.focus();
+    }
+  }
+
+  function showFeature(index) {
+    if (index < 0 || index >= featureCards.length) return;
+    currentIndex = index;
+    openLightbox(featureCards[currentIndex]);
+  }
+
+  function updateNav() {
+    if (featureCards.length <= 1) {
+      navEl.hidden = true;
+      return;
+    }
+    navEl.hidden = false;
+    counterEl.textContent = `${currentIndex + 1} of ${featureCards.length}`;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === featureCards.length - 1;
+  }
+
+  // Event listeners for feature cards
+  featureCards.forEach(card => {
+    const previewBtn = card.querySelector('.preview-link');
+    if (previewBtn) {
+      previewBtn.addEventListener('click', () => openLightbox(card));
+    }
+  });
+
+  // Close handlers
+  closeBtn.addEventListener('click', closeLightbox);
+  backdrop.addEventListener('click', closeLightbox);
+
+  // Navigation handlers
+  prevBtn.addEventListener('click', () => showFeature(currentIndex - 1));
+  nextBtn.addEventListener('click', () => showFeature(currentIndex + 1));
+
+  // Keyboard navigation
+  lightbox.addEventListener('keydown', (e) => {
+    if (lightbox.hidden) return;
+
+    switch (e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        if (currentIndex > 0) showFeature(currentIndex - 1);
+        break;
+      case 'ArrowRight':
+        if (currentIndex < featureCards.length - 1) showFeature(currentIndex + 1);
+        break;
+    }
+  });
+
+  // Trap focus within lightbox
+  lightbox.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || lightbox.hidden) return;
+
+    const focusable = lightbox.querySelectorAll('button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusable[0];
+    const lastFocusable = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === firstFocusable) {
+      e.preventDefault();
+      lastFocusable.focus();
+    } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+      e.preventDefault();
+      firstFocusable.focus();
+    }
+  });
+}
+
+/**
  * Initialize the page
  */
 async function init() {
@@ -208,7 +338,8 @@ async function init() {
   initParallax();
   initLazyLoading();
   initHeaderScroll();
-  
+  initFeatureLightbox();
+
   // Fetch and display release info
   const release = await fetchLatestRelease();
   updateUI(release);
