@@ -41,6 +41,12 @@ async function initFarming() {
 
     // Create simulation modal
     createFarmingSimulationModal();
+
+    // Listen for owned lands updates from other tabs
+    window.addEventListener('ownedLandsUpdated', () => {
+      console.log('[Farming] Received ownedLandsUpdated event, refreshing lands summary');
+      renderFarmingLandsSummary();
+    });
   } catch (err) {
     console.error('Failed to initialize farming tab:', err);
     if (container) {

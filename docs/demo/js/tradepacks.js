@@ -37,6 +37,12 @@ async function initTradepacks() {
     createSimulationModal();
     renderLandsSummary();
     setupLandsSummaryHandlers();
+
+    // Listen for owned lands updates from other tabs
+    window.addEventListener('ownedLandsUpdated', () => {
+      console.log('[Tradepacks] Received ownedLandsUpdated event, refreshing lands summary');
+      renderLandsSummary();
+    });
   } catch (error) {
     console.error('Failed to load tradepack data:', error);
     const container = document.getElementById('tradepacksListContainer');

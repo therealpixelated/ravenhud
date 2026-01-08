@@ -60,6 +60,17 @@ function calculateTotalTiles(ownedLands) {
   return { total };
 }
 
+// Parse growth time string (e.g., "6h", "2H", "15H") to hours
+function parseGrowthTimeDemo(timeStr) {
+  if (!timeStr) return 6; // Default to 6 hours
+  const match = timeStr.match(/(\d+(?:\.\d+)?)\s*[hH]/);
+  if (match) return parseFloat(match[1]);
+  // Try minutes
+  const minMatch = timeStr.match(/(\d+)\s*[mM]/);
+  if (minMatch) return parseFloat(minMatch[1]) / 60;
+  return 6;
+}
+
 // Create the electronAPI mock
 window.electronAPI = {
   // === Land Data (uses LandHandlers) ===
@@ -173,6 +184,9 @@ window.electronAPI = {
       ownedLands: lands,
       totalTiles: calculateTotalTiles(lands)
     };
+    // Dispatch custom event so other tabs can refresh their lands summary
+    window.dispatchEvent(new CustomEvent('ownedLandsUpdated', { detail: mockOwnedLands }));
+    console.log('[API Mock] Owned lands updated, dispatched event. Total tiles:', mockOwnedLands.totalTiles.total);
     return { success: true };
   },
 
@@ -322,13 +336,182 @@ window.electronAPI = {
   },
 
   // === Farming Simulation ===
-  simulateFarmingSelection: async ({ landType, crops, profile }) => {
+  simulateFarmingSelection: async ({ selectedCrops = [], ownedLands = {}, timeWindowHours = 48, cropWeights = {} }) => {
+    console.log('[API Mock] simulateFarmingSelection called:', { selectedCrops, ownedLands, timeWindowHours });
+
+    if (!selectedCrops.length) {
+      return {
+        summary: { totalLands: 0, totalTilesUsed: 0, totalTilesAvailable: 0 },
+        yields: {},
+        totalXP: 0,
+        landSimulations: [],
+        cropBreakdown: []
+      };
+    }
+
+    // Get crops data
+    let cropsData = null;
+    try {
+      const response = await fetch('data/crops.json');
+      cropsData = await response.json();
+    } catch (err) {
+      console.error('[API Mock] Failed to load crops data:', err);
+      return {
+        summary: { totalLands: 0, totalTilesUsed: 0, totalTilesAvailable: 0 },
+        yields: {},
+        totalXP: 0,
+        landSimulations: [],
+        cropBreakdown: []
+      };
+    }
+
+    // Get land types data
+    const landTypes = await window.electronAPI.getLandTypes();
+
+    // Get selected crop objects
+    const selectedCropObjects = cropsData.items
+      .filter((c) => selectedCrops.includes(c.id))
+      .map((crop) => ({
+        ...crop,
+        width: crop.width || 1,
+        height: crop.height || 1,
+        growthHours: parseGrowthTimeDemo(crop.growthTime)
+      }));
+
+    // Build list of all owned lands
+    const landsList = [];
+    const LAND_TILES = {
+      SMALL_COMMUNITY: 56, MEDIUM_COMMUNITY: 91, LARGE_COMMUNITY: 130,
+      NFT_SMALL: 100, NFT_MEDIUM: 144, NFT_LARGE: 225
+    };
+
+    Object.entries(ownedLands).forEach(([landType, count]) => {
+      if (count > 0) {
+        const landInfo = landTypes.find((l) => l.id === landType);
+        if (landInfo) {
+          for (let i = 0; i < count; i++) {
+            landsList.push({
+              id: `${landType}_${i + 1}`,
+              landType,
+              name: `${landInfo.name} #${i + 1}`,
+              tiles: LAND_TILES[landType] || landInfo.tiles?.length || 0,
+              width: landInfo.width,
+              height: landInfo.height,
+              hasHouse: landInfo.hasHouse || false
+            });
+          }
+        }
+      }
+    });
+
+    if (landsList.length === 0) {
+      return {
+        summary: { totalLands: 0, totalTilesUsed: 0, totalTilesAvailable: 0 },
+        yields: {},
+        totalXP: 0,
+        landSimulations: [],
+        cropBreakdown: []
+      };
+    }
+
+    // Allocate lands to crops (simple round-robin based on weights)
+    const cropAllocations = {};
+    selectedCropObjects.forEach((crop) => {
+      cropAllocations[crop.id] = { crop, lands: [], totalSlots: 0 };
+    });
+
+    // Distribute lands to crops
+    landsList.forEach((land, idx) => {
+      const cropIdx = idx % selectedCropObjects.length;
+      const crop = selectedCropObjects[cropIdx];
+      cropAllocations[crop.id].lands.push(land);
+    });
+
+    // Calculate yields and build results
+    const yields = {};
+    let totalXP = 0;
+    const landSimulations = [];
+    const cropBreakdown = [];
+
+    selectedCropObjects.forEach((crop) => {
+      const allocation = cropAllocations[crop.id];
+      const landsUsed = allocation.lands.length;
+      const tileSize = crop.width * crop.height;
+
+      allocation.lands.forEach((land) => {
+        // Calculate slots that fit (accounting for house tiles if NFT)
+        const availableTiles = land.hasHouse ? Math.floor(land.tiles * 0.85) : land.tiles;
+        const slots = Math.floor(availableTiles / tileSize);
+        allocation.totalSlots += slots;
+
+        // Calculate harvests in time window
+        const growthHours = crop.growthHours || 6;
+        const harvestsInWindow = Math.floor(timeWindowHours / growthHours);
+
+        // Calculate yield per slot per harvest
+        const cropYields = crop.yields || [];
+        const placements = [];
+
+        // Generate simple placements
+        for (let s = 0; s < slots; s++) {
+          placements.push({
+            crop: { id: crop.id, name: crop.name, icon: crop.icon },
+            x: (s % land.width) * crop.width,
+            y: Math.floor(s / land.width) * crop.height
+          });
+        }
+
+        // Add to land simulations
+        landSimulations.push({
+          land,
+          simulation: {
+            placements,
+            totalTilesUsed: slots * tileSize,
+            totalTilesAvailable: land.tiles,
+            utilization: Math.round((slots * tileSize / land.tiles) * 100)
+          }
+        });
+
+        // Accumulate yields
+        cropYields.forEach((y) => {
+          if (!yields[y.resource]) {
+            yields[y.resource] = { totalYield: 0, harvestCount: 0 };
+          }
+          const yieldPerHarvest = slots * (y.avg || (y.min + y.max) / 2);
+          yields[y.resource].totalYield += Math.round(yieldPerHarvest * harvestsInWindow);
+          yields[y.resource].harvestCount += harvestsInWindow;
+        });
+
+        // Accumulate XP
+        const xpPerHarvest = crop.gathering?.experience || crop.experience || 0;
+        totalXP += slots * xpPerHarvest * harvestsInWindow;
+      });
+
+      // Add to crop breakdown
+      if (landsUsed > 0) {
+        cropBreakdown.push({
+          cropId: crop.id,
+          cropName: crop.name,
+          landsUsed,
+          slotsTotal: allocation.totalSlots
+        });
+      }
+    });
+
+    // Calculate summary
+    const totalTilesAvailable = landsList.reduce((sum, l) => sum + l.tiles, 0);
+    const totalTilesUsed = landSimulations.reduce((sum, ls) => sum + (ls.simulation?.totalTilesUsed || 0), 0);
+
     return {
-      success: true,
-      totalYield: 0,
-      placements: [],
-      utilization: 0,
-      message: 'Demo mode - run the full app for detailed simulations'
+      summary: {
+        totalLands: landsList.length,
+        totalTilesUsed,
+        totalTilesAvailable
+      },
+      yields,
+      totalXP: Math.round(totalXP),
+      landSimulations,
+      cropBreakdown
     };
   },
 
