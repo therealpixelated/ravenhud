@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RavenHUD Demo - Land & Tradepack Simulators</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="css/demo.css">
+  <style>
+    /* Demo-specific overrides */
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .demo-banner {
+      background: linear-gradient(135deg, #c9a959, #b8954a);
+      color: #1a1614;
+      padding: 12px 24px;
+      text-align: center;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .demo-banner a {
+      background: #1a1614;
+      color: #e8dcc8;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .demo-banner a:hover {
+      background: #2a2420;
+      transform: translateY(-1px);
+    }
+
+    .demo-tabs {
+      display: flex;
+      background: #1a1614;
+      border-bottom: 1px solid #3a3230;
+      padding: 0 16px;
+    }
+
+    .demo-tab {
+      padding: 16px 24px;
+      color: #a89888;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .demo-tab:hover:not(.disabled) {
+      color: #e8dcc8;
+      background: #2a2420;
+    }
+
+    .demo-tab.active {
+      color: #c9a959;
+      border-bottom-color: #c9a959;
+    }
+
+    .demo-tab.disabled {
+      color: #6a6058;
+      cursor: not-allowed;
+      position: relative;
+    }
+
+    .demo-tab.disabled::after {
+      content: 'Desktop Only';
+      font-size: 0.65rem;
+      background: #3a3230;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .demo-content {
+      padding: 24px;
+      min-height: calc(100vh - 150px);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Land simulator placeholder */
+    .land-demo {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      height: calc(100vh - 200px);
+    }
+
+    .land-sidebar {
+      background: #252220;
+      border-radius: 12px;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .land-main {
+      background: #252220;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .land-grid-placeholder {
+      width: 400px;
+      height: 400px;
+      background: #1a1614;
+      border: 2px solid #3a3230;
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      gap: 2px;
+      padding: 8px;
+    }
+
+    .grid-cell {
+      background: #6b4423;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .grid-cell.house {
+      background: #4a4a4a;
+    }
+
+    .grid-cell:hover {
+      background: #c9a959;
+      cursor: pointer;
+    }
+
+    .crop-list {
+      margin-top: 16px;
+    }
+
+    .crop-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: #1a1614;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .crop-item:hover {
+      background: #2a2420;
+      border-color: #c9a959;
+    }
+
+    .crop-icon {
+      font-size: 1.5rem;
+    }
+
+    .crop-info h4 {
+      margin: 0 0 4px 0;
+      color: #e8dcc8;
+      font-size: 0.95rem;
+    }
+
+    .crop-info p {
+      margin: 0;
+      color: #a89888;
+      font-size: 0.8rem;
+    }
+
+    /* Section headers */
+    .section-header {
+      color: #c9a959;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #3a3230;
+    }
+
+    /* Tradepack demo */
+    .tradepack-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .tradepack-card {
+      background: #252220;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .tradepack-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: #1a1614;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #3a3230;
+      transition: all 0.2s;
+    }
+
+    .tradepack-item:hover {
+      border-color: #c9a959;
+    }
+
+    .tradepack-icon {
+      font-size: 2rem;
+    }
+
+    .tradepack-info h4 {
+      margin: 0 0 4px 0;
+      color: #e8dcc8;
+    }
+
+    .tradepack-info p {
+      margin: 0;
+      color: #a89888;
+      font-size: 0.85rem;
+    }
+
+    .profit-badge {
+      margin-left: auto;
+      background: linear-gradient(135deg, #c9a959, #b8954a);
+      color: #1a1614;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    /* Farming demo */
+    .farming-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .farming-card {
+      background: #252220;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #3a3230;
+    }
+
+    .farming-card h3 {
+      color: #c9a959;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-item {
+      background: #1a1614;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #c9a959;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #a89888;
+    }
+
+    /* Loading state */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      color: #a89888;
+    }
+
+    .loading::after {
+      content: '';
+      width: 24px;
+      height: 24px;
+      border: 2px solid #3a3230;
+      border-top-color: #c9a959;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 12px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="background-gradient">
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    <span>🎮 This is a demo preview. Some features are limited.</span>
+    <a href="../index.html#download">Download Full App</a>
+    <a href="../index.html">← Back to Home</a>
+  </div>
+
+  <!-- Tab Navigation -->
+  <div class="demo-tabs">
+    <div class="demo-tab active" data-tab="land">🏡 Land Simulator</div>
+    <div class="demo-tab" data-tab="tradepacks">📦 Tradepack Calculator</div>
+    <div class="demo-tab" data-tab="farming">🌾 Farming Simulation</div>
+    <div class="demo-tab disabled">🏆 Trophies</div>
+    <div class="demo-tab disabled">🎨 Cosmetics</div>
+    <div class="demo-tab disabled">👹 Creatures</div>
+    <div class="demo-tab disabled">📅 Events</div>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="demo-content">
+    <!-- Land Simulator Tab -->
+    <div class="tab-panel active" id="land-panel">
+      <div class="land-demo">
+        <div class="land-sidebar">
+          <h3 class="section-header">Land Type</h3>
+          <select id="land-type-select" style="width: 100%; padding: 10px; background: #1a1614; color: #e8dcc8; border: 1px solid #3a3230; border-radius: 8px; margin-bottom: 16px;">
+            <option value="SMALL_COMMUNITY">Small Community (8×8)</option>
+            <option value="MEDIUM_COMMUNITY">Medium Community (10×10)</option>
+            <option value="LARGE_COMMUNITY">Large Community (12×12)</option>
+            <option value="NFT_SMALL">Small NFT (8×8)</option>
+            <option value="NFT_MEDIUM">Medium NFT (10×10)</option>
+            <option value="NFT_LARGE">Large NFT (12×12)</option>
+          </select>
+
+          <h3 class="section-header">Crops</h3>
+          <div class="crop-list" id="crop-list">
+            <div class="loading">Loading crops...</div>
+          </div>
+        </div>
+        <div class="land-main">
+          <h2 style="color: #e8dcc8; margin-bottom: 16px;">Land Grid</h2>
+          <div class="land-grid-placeholder" id="land-grid">
+            <!-- Grid cells generated by JS -->
+          </div>
+          <p style="color: #a89888; margin-top: 16px; text-align: center;">
+            Click on the grid to place crops. Download the full app for advanced features like auto-optimization, layouts, and rotation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tradepack Calculator Tab -->
+    <div class="tab-panel" id="tradepacks-panel">
+      <div class="tradepack-demo">
+        <div class="tradepack-card">
+          <h3 class="section-header">Available Tradepacks</h3>
+          <div id="tradepack-list">
+            <div class="loading">Loading tradepacks...</div>
+          </div>
+        </div>
+        <div class="tradepack-card">
+          <h3 class="section-header">Profit Calculator</h3>
+          <p style="color: #a89888; margin-bottom: 16px;">
+            Select a tradepack to see detailed profit calculations, material costs, and land comparisons.
+          </p>
+          <div id="profit-calculator">
+            <div class="stat-item" style="margin-bottom: 12px;">
+              <div class="stat-label">Select a tradepack from the list</div>
+            </div>
+          </div>
+          <p style="color: #6a6058; font-size: 0.85rem; margin-top: 16px;">
+            💡 The full app includes: labor cost settings, sell multipliers, land optimization, and multi-land comparison.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Farming Simulation Tab -->
+    <div class="tab-panel" id="farming-panel">
+      <div class="farming-demo">
+        <div class="farming-card">
+          <h3>🌾 Farming Overview</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value" id="total-crops">0</div>
+              <div class="stat-label">Crop Types</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">6</div>
+              <div class="stat-label">Land Types</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Combinations</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">24h</div>
+              <div class="stat-label">Max Cycle</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="farming-card">
+          <h3>📊 Features</h3>
+          <ul style="color: #a89888; line-height: 2;">
+            <li>Configure your owned lands</li>
+            <li>Select crops to grow</li>
+            <li>Calculate expected yields</li>
+            <li>Plan planting schedules</li>
+            <li>Track active sessions</li>
+            <li>Export farming reports</li>
+          </ul>
+        </div>
+
+        <div class="farming-card">
+          <h3>🌱 Crop Categories</h3>
+          <div id="crop-categories">
+            <div class="loading">Loading categories...</div>
+          </div>
+        </div>
+
+        <div class="farming-card">
+          <h3>⬇️ Get the Full Experience</h3>
+          <p style="color: #a89888; margin-bottom: 16px;">
+            The desktop app includes real-time farming sessions, timers, notifications, and detailed yield tracking.
+          </p>
+          <a href="../index.html#download" style="display: inline-block; background: linear-gradient(135deg, #c9a959, #b8954a); color: #1a1614; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+            Download RavenHUD
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api-mock.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.demo-tab:not(.disabled)').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(`${tab.dataset.tab}-panel`).classList.add('active');
+      });
+    });
+
+    // Initialize demo
+    async function initDemo() {
+      await loadCrops();
+      await loadTradepacks();
+      initLandGrid();
+    }
+
+    // Load crops for sidebar
+    async function loadCrops() {
+      try {
+        const crops = await window.electronAPI.getCropData();
+        const cropList = document.getElementById('crop-list');
+        const categories = {};
+
+        // Group by category
+        crops.forEach(crop => {
+          const cat = crop.category || 'other';
+          if (!categories[cat]) categories[cat] = [];
+          categories[cat].push(crop);
+        });
+
+        // Render
+        cropList.innerHTML = '';
+        const emojis = { farming: '🌾', herbalism: '🌿', husbandry: '🐄', woodcutting: '🌲', breeding: '🥚' };
+
+        for (const [cat, items] of Object.entries(categories)) {
+          const first5 = items.slice(0, 5);
+          first5.forEach(crop => {
+            cropList.innerHTML += `
+              <div class="crop-item" data-crop="${crop.id}">
+                <span class="crop-icon">${emojis[cat] || '🌱'}</span>
+                <div class="crop-info">
+                  <h4>${crop.name}</h4>
+                  <p>${crop.width || 2}×${crop.height || 2} • ${cat}</p>
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        // Update farming stats
+        document.getElementById('total-crops').textContent = crops.length;
+
+        // Show categories in farming tab
+        const catContainer = document.getElementById('crop-categories');
+        catContainer.innerHTML = Object.entries(categories).map(([cat, items]) => `
+          <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #3a3230;">
+            <span style="color: #e8dcc8;">${emojis[cat] || '🌱'} ${cat}</span>
+            <span style="color: #c9a959;">${items.length} crops</span>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        console.error('Failed to load crops:', err);
+        document.getElementById('crop-list').innerHTML = '<p style="color: #a89888;">Failed to load crops</p>';
+      }
+    }
+
+    // Load tradepacks
+    async function loadTradepacks() {
+      try {
+        const tradepacks = await window.electronAPI.getTradepackData();
+        const list = document.getElementById('tradepack-list');
+
+        // Show first 6 tradepacks
+        const sample = tradepacks.slice(0, 6);
+        list.innerHTML = sample.map(tp => `
+          <div class="tradepack-item" data-id="${tp.id}">
+            <span class="tradepack-icon">📦</span>
+            <div class="tradepack-info">
+              <h4>${tp.name}</h4>
+              <p>${tp.materials?.length || 0} materials required</p>
+            </div>
+            <div class="profit-badge">${tp.basePrice || '???'}g</div>
+          </div>
+        `).join('');
+
+        // Click handler
+        list.querySelectorAll('.tradepack-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const tp = tradepacks.find(t => t.id === item.dataset.id);
+            showTradepackDetails(tp);
+          });
+        });
+
+      } catch (err) {
+        console.error('Failed to load tradepacks:', err);
+        document.getElementById('tradepack-list').innerHTML = '<p style="color: #a89888;">Failed to load tradepacks</p>';
+      }
+    }
+
+    function showTradepackDetails(tp) {
+      const calc = document.getElementById('profit-calculator');
+      calc.innerHTML = `
+        <div style="background: #1a1614; padding: 16px; border-radius: 8px; margin-bottom: 12px;">
+          <h4 style="color: #c9a959; margin: 0 0 8px 0;">${tp.name}</h4>
+          <p style="color: #a89888; margin: 0;">Base Price: <span style="color: #7cb342;">${tp.basePrice || 0}g</span></p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">${tp.materials?.length || 0}</div>
+            <div class="stat-label">Materials</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">${tp.basePrice || 0}g</div>
+            <div class="stat-label">Est. Profit</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize land grid
+    function initLandGrid() {
+      const grid = document.getElementById('land-grid');
+      const select = document.getElementById('land-type-select');
+
+      function renderGrid(type) {
+        const sizes = {
+          'SMALL_COMMUNITY': 8, 'MEDIUM_COMMUNITY': 10, 'LARGE_COMMUNITY': 12,
+          'NFT_SMALL': 8, 'NFT_MEDIUM': 10, 'NFT_LARGE': 12
+        };
+        const size = sizes[type] || 8;
+        const isNFT = type.startsWith('NFT');
+
+        grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+        let cells = '';
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const isHouse = !isNFT && x < 3 && y < 3;
+            cells += `<div class="grid-cell${isHouse ? ' house' : ''}" data-x="${x}" data-y="${y}"></div>`;
+          }
+        }
+        grid.innerHTML = cells;
+
+        // Add click handlers
+        grid.querySelectorAll('.grid-cell:not(.house)').forEach(cell => {
+          cell.addEventListener('click', () => {
+            cell.style.background = cell.style.background === 'rgb(201, 169, 89)' ? '#6b4423' : '#c9a959';
+          });
+        });
+      }
+
+      select.addEventListener('change', () => renderGrid(select.value));
+      renderGrid('SMALL_COMMUNITY');
+    }
+
+    // Start
+    initDemo();
+  </script>
+</body>
+</html>

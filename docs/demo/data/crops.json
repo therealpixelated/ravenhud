@@ -1,0 +1,2192 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "description": "Crop growth data for land optimization in RavenQuest Companion",
+    "lastUpdated": "2026-01-01",
+    "source": "https://ravenquest.wiki/farm-spreadsheet",
+    "notes": "Updated schema with gathering/butchering sections. Experience and detailed yields to be filled manually from in-game data.",
+    "schema": {
+      "gathering": "Repeatable harvest data (time, experience, yields)",
+      "butchering": "One-time harvest data for animals (time, experience, yields)",
+      "legacy": "growthTime and yields fields kept for backward compatibility"
+    }
+  },
+  "categories": {
+    "farming": {
+      "description": "Grain and vegetable crops",
+      "icon": ""
+    },
+    "herbalism": {
+      "description": "Herbs and alchemical plants",
+      "icon": ""
+    },
+    "husbandry": {
+      "description": "Animal products and livestock",
+      "icon": ""
+    },
+    "woodcutting": {
+      "description": "Trees and wood products",
+      "icon": ""
+    },
+    "breeding": {
+      "description": "Mount breeding and exotic animals",
+      "icon": ""
+    }
+  },
+  "items": [
+    {
+      "id": "acorn_tree",
+      "name": "Acorn Tree",
+      "category": "farming",
+      "level": 47,
+      "growthTime": null,
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Acorn",
+          "min": 6,
+          "max": 12,
+          "avg": 9,
+          "unitCost": 533
+        }
+      ],
+      "icon": "🌰",
+      "gathering": {
+        "time": "48H",
+        "experience": 3562,
+        "yields": [],
+        "timeMinutes": 2880
+      }
+    },
+    {
+      "id": "apple_tree",
+      "name": "Apple Tree",
+      "category": "farming",
+      "level": 7,
+      "growthTime": "7H 30m",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Apple",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 164
+        }
+      ],
+      "icon": "🍎",
+      "gathering": {
+        "time": "7.5H",
+        "experience": 1112,
+        "yields": [],
+        "timeMinutes": 450
+      },
+      "growthTimeMinutes": 450
+    },
+    {
+      "id": "banana_tree",
+      "name": "Banana Tree",
+      "category": "farming",
+      "level": 32,
+      "growthTime": null,
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Banana",
+          "min": 6,
+          "max": 12,
+          "avg": 9,
+          "unitCost": 267
+        }
+      ],
+      "icon": "🍌",
+      "gathering": {
+        "time": "24H",
+        "experience": 3212,
+        "yields": [],
+        "timeMinutes": 1440
+      }
+    },
+    {
+      "id": "beans",
+      "name": "Beans",
+      "category": "farming",
+      "level": 30,
+      "growthTime": "15H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Bean",
+          "min": 9,
+          "max": 15,
+          "avg": 12,
+          "unitCost": 47
+        }
+      ],
+      "icon": "🫘",
+      "gathering": {
+        "time": "15H",
+        "experience": 4470,
+        "yields": [],
+        "timeMinutes": 900
+      },
+      "growthTimeMinutes": 900
+    },
+    {
+      "id": "blueberries",
+      "name": "Blueberries",
+      "category": "farming",
+      "level": 17,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Blueberry",
+          "min": 9,
+          "max": 15,
+          "avg": 12,
+          "unitCost": 18
+        }
+      ],
+      "icon": "🫐",
+      "gathering": {
+        "time": "6H",
+        "experience": 3734,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "broccoli",
+      "name": "Broccoli",
+      "category": "farming",
+      "level": 50,
+      "growthTime": "15H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Broccoli",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 125
+        }
+      ],
+      "icon": "🥦",
+      "gathering": {
+        "time": "15H",
+        "experience": 2406,
+        "yields": [],
+        "timeMinutes": 900
+      },
+      "growthTimeMinutes": 900
+    },
+    {
+      "id": "cabbages",
+      "name": "Cabbages",
+      "category": "farming",
+      "level": 20,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Cabbage",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 72
+        }
+      ],
+      "icon": "🥬",
+      "gathering": {
+        "time": "6H",
+        "experience": 2880,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "carrots",
+      "name": "Carrots",
+      "category": "farming",
+      "level": 10,
+      "growthTime": "2H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Carrot",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 28
+        }
+      ],
+      "icon": "🥕",
+      "gathering": {
+        "time": "2H",
+        "experience": 1131,
+        "yields": [],
+        "timeMinutes": 120
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "cherries",
+      "name": "Cherries",
+      "category": "farming",
+      "level": 21,
+      "growthTime": "21H",
+      "gatheringMultiplier": 3,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Cherry",
+          "min": 6,
+          "max": 12,
+          "avg": 9,
+          "unitCost": 233
+        }
+      ],
+      "icon": "🍒",
+      "gathering": {
+        "time": "21H",
+        "experience": 3228,
+        "yields": [],
+        "timeMinutes": 1260
+      },
+      "growthTimeMinutes": 1260
+    },
+    {
+      "id": "corn",
+      "name": "Corn",
+      "category": "farming",
+      "level": 3,
+      "growthTime": "15H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Corn",
+          "min": 6,
+          "max": 9,
+          "avg": 7.5,
+          "unitCost": 75
+        }
+      ],
+      "icon": "🌽",
+      "gathering": {
+        "time": "15H",
+        "experience": 2181,
+        "yields": [],
+        "timeMinutes": 900
+      },
+      "growthTimeMinutes": 900
+    },
+    {
+      "id": "cotton_tree",
+      "name": "Cotton Tree",
+      "category": "farming",
+      "level": 1,
+      "growthTime": "5H 30m",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Cotton",
+          "min": 4,
+          "max": 8,
+          "avg": 6,
+          "unitCost": 73
+        }
+      ],
+      "icon": "☁️",
+      "gathering": {
+        "time": "5.5H",
+        "experience": 1680,
+        "yields": [],
+        "timeMinutes": 330
+      },
+      "growthTimeMinutes": 330
+    },
+    {
+      "id": "garlic",
+      "name": "Garlic",
+      "category": "farming",
+      "level": 45,
+      "growthTime": "18H 40m",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Garlic",
+          "min": 6,
+          "max": 12,
+          "avg": 9,
+          "unitCost": 67
+        }
+      ],
+      "icon": "🧄",
+      "gathering": {
+        "time": "18H 40m",
+        "experience": 1483,
+        "yields": [],
+        "timeMinutes": 1120
+      },
+      "growthTimeMinutes": 1120
+    },
+    {
+      "id": "grapes",
+      "name": "Grapes",
+      "category": "farming",
+      "level": 15,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Grape",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 72
+        }
+      ],
+      "icon": "🍇",
+      "gathering": {
+        "time": "6H",
+        "experience": 4890,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "moonberry",
+      "name": "Moonberry",
+      "category": "farming",
+      "level": 42,
+      "growthTime": "21H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Moonberry",
+          "min": 3,
+          "max": 9,
+          "avg": 6,
+          "unitCost": 132
+        }
+      ],
+      "icon": "🌙",
+      "gathering": {
+        "time": "21H",
+        "experience": 2108,
+        "yields": [],
+        "timeMinutes": 1260
+      },
+      "growthTimeMinutes": 1260
+    },
+    {
+      "id": "onions",
+      "name": "Onions",
+      "category": "farming",
+      "level": 25,
+      "growthTime": "9H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Onion",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 75
+        }
+      ],
+      "icon": "🧅",
+      "gathering": {
+        "time": "9H",
+        "experience": 2275,
+        "yields": [],
+        "timeMinutes": 540
+      },
+      "growthTimeMinutes": 540
+    },
+    {
+      "id": "orange_tree",
+      "name": "Orange Tree",
+      "category": "farming",
+      "level": 22,
+      "growthTime": "15H",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Orange",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 333
+        }
+      ],
+      "icon": "🍊",
+      "gathering": {
+        "time": "15H",
+        "experience": 4264,
+        "yields": [],
+        "timeMinutes": 900
+      },
+      "growthTimeMinutes": 900
+    },
+    {
+      "id": "peas",
+      "name": "Peas",
+      "category": "farming",
+      "level": 40,
+      "growthTime": "19H 30m",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Pea",
+          "min": 9,
+          "max": 15,
+          "avg": 12,
+          "unitCost": 60
+        }
+      ],
+      "icon": "🫛",
+      "gathering": {
+        "time": "19.5H",
+        "experience": 4133,
+        "yields": [],
+        "timeMinutes": 1170
+      },
+      "growthTimeMinutes": 1170
+    },
+    {
+      "id": "peppers",
+      "name": "Peppers",
+      "category": "farming",
+      "level": 21,
+      "growthTime": "4H 30m",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Pepper",
+          "min": 9,
+          "max": 15,
+          "avg": 12,
+          "unitCost": 90
+        }
+      ],
+      "icon": "🌶️",
+      "gathering": {
+        "time": "28.5H",
+        "experience": 1923,
+        "yields": [],
+        "timeMinutes": 1710
+      },
+      "growthTimeMinutes": 270
+    },
+    {
+      "id": "potatoes",
+      "name": "Potatoes",
+      "category": "farming",
+      "level": 1,
+      "growthTime": "1H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Potato",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 12
+        }
+      ],
+      "icon": "🥔",
+      "gathering": {
+        "time": "1H",
+        "experience": 3292,
+        "yields": [],
+        "timeMinutes": 60
+      },
+      "growthTimeMinutes": 60
+    },
+    {
+      "id": "pumpkin",
+      "name": "Pumpkin",
+      "category": "farming",
+      "level": 35,
+      "growthTime": null,
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Pumpkin",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 300
+        }
+      ],
+      "icon": "🎃",
+      "gathering": {
+        "time": "24H",
+        "experience": 2548,
+        "yields": [],
+        "timeMinutes": 1440
+      }
+    },
+    {
+      "id": "strawberries",
+      "name": "Strawberries",
+      "category": "farming",
+      "level": 27,
+      "growthTime": "7H 30m",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Strawberry",
+          "min": 6,
+          "max": 12,
+          "avg": 9,
+          "unitCost": 32
+        }
+      ],
+      "icon": "🍓",
+      "gathering": {
+        "time": "7.5H",
+        "experience": 3209,
+        "yields": [],
+        "timeMinutes": 450
+      },
+      "growthTimeMinutes": 450
+    },
+    {
+      "id": "sunberries",
+      "name": "Sunberries",
+      "category": "farming",
+      "level": 52,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Sunberry",
+          "min": 3,
+          "max": 9,
+          "avg": 6,
+          "unitCost": 180
+        }
+      ],
+      "icon": "☀️",
+      "gathering": {
+        "time": "30H",
+        "experience": 3109,
+        "yields": [],
+        "timeMinutes": 1800
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "watermelon",
+      "name": "Watermelon",
+      "category": "farming",
+      "level": 37,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Watermelon",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 360
+        }
+      ],
+      "icon": "🍉",
+      "gathering": {
+        "time": "30H",
+        "experience": 1763,
+        "yields": [],
+        "timeMinutes": 1800
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "wheat",
+      "name": "Wheat",
+      "category": "farming",
+      "level": 5,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Wheat",
+          "min": 3,
+          "max": 9,
+          "avg": 6,
+          "unitCost": 36
+        }
+      ],
+      "icon": "🌾",
+      "gathering": {
+        "time": "6H",
+        "experience": 4519,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "bloodthorn",
+      "name": "Bloodthorn",
+      "category": "herbalism",
+      "level": 14,
+      "growthTime": "16H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Bloody Bud",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 565
+        }
+      ],
+      "icon": "🩸",
+      "gathering": {
+        "time": "16H",
+        "experience": 3909,
+        "yields": [],
+        "timeMinutes": 960
+      },
+      "growthTimeMinutes": 960
+    },
+    {
+      "id": "bogbush",
+      "name": "Bogbush",
+      "category": "herbalism",
+      "level": 3,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Toadchew",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 524
+        }
+      ],
+      "icon": "🌱",
+      "gathering": {
+        "time": "6H",
+        "experience": 2559,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "brightday",
+      "name": "Brightday",
+      "category": "herbalism",
+      "level": 10,
+      "growthTime": "8H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Brightday",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 533
+        }
+      ],
+      "icon": "🌻",
+      "gathering": {
+        "time": "8H",
+        "experience": 4763,
+        "yields": [],
+        "timeMinutes": 480
+      },
+      "growthTimeMinutes": 480
+    },
+    {
+      "id": "cerulean_mushroom",
+      "name": "Cerulean Mushroom",
+      "category": "herbalism",
+      "level": 4,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Cerulean Cap",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 716
+        }
+      ],
+      "icon": "🔵",
+      "gathering": {
+        "time": "6H",
+        "experience": 1755,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "chest_warmer",
+      "name": "Chest Warmer",
+      "category": "herbalism",
+      "level": 22,
+      "growthTime": "20H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Chest Warmer",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 580
+        }
+      ],
+      "icon": "❤️",
+      "gathering": {
+        "time": "20H",
+        "experience": 2197,
+        "yields": [],
+        "timeMinutes": 1200
+      },
+      "growthTimeMinutes": 1200
+    },
+    {
+      "id": "crystal_mushroom",
+      "name": "Crystal Mushroom",
+      "category": "herbalism",
+      "level": 29,
+      "growthTime": "20H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Crystal Cap",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 580
+        }
+      ],
+      "icon": "✨",
+      "gathering": {
+        "time": "20H",
+        "experience": 2005,
+        "yields": [],
+        "timeMinutes": 1200
+      },
+      "growthTimeMinutes": 1200
+    },
+    {
+      "id": "crystal_plant",
+      "name": "Crystal Plant",
+      "category": "herbalism",
+      "level": 58,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Crystal Leaf",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 7107
+        }
+      ],
+      "icon": "💎",
+      "gathering": {
+        "time": "30H",
+        "experience": 3762,
+        "yields": [],
+        "timeMinutes": 1800
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "dread_bloom",
+      "name": "Dread Bloom",
+      "category": "herbalism",
+      "level": 18,
+      "growthTime": null,
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Dread Bloom",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 764
+        }
+      ],
+      "icon": "💀",
+      "gathering": {
+        "time": "24H",
+        "experience": 2744,
+        "yields": [],
+        "timeMinutes": 1440
+      }
+    },
+    {
+      "id": "dry_mushroom",
+      "name": "Dry Mushroom",
+      "category": "herbalism",
+      "level": 19,
+      "growthTime": "16H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Dry Stem",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 565
+        }
+      ],
+      "icon": "🏜️",
+      "gathering": {
+        "time": "16H",
+        "experience": 4395,
+        "yields": [],
+        "timeMinutes": 960
+      },
+      "growthTimeMinutes": 960
+    },
+    {
+      "id": "earthy_mushroom",
+      "name": "Earthy Mushroom",
+      "category": "herbalism",
+      "level": 2,
+      "growthTime": "2H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Earthy Stem",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 220
+        }
+      ],
+      "icon": "🍄",
+      "gathering": {
+        "time": "2H",
+        "experience": 1269,
+        "yields": [],
+        "timeMinutes": 120
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "flaming_mushroom",
+      "name": "Flaming Mushroom",
+      "category": "herbalism",
+      "level": 49,
+      "growthTime": "8H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Fire Cap",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 5130
+        }
+      ],
+      "icon": "🔥",
+      "gathering": {
+        "time": "32H",
+        "experience": 1642,
+        "yields": [],
+        "timeMinutes": 1920
+      },
+      "growthTimeMinutes": 480
+    },
+    {
+      "id": "green_mushroom",
+      "name": "Green Mushroom",
+      "category": "herbalism",
+      "level": 7,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Green Cap",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 525
+        }
+      ],
+      "icon": "🟢",
+      "gathering": {
+        "time": "6H",
+        "experience": 2942,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "juicy_mushroom",
+      "name": "Juicy Mushroom",
+      "category": "herbalism",
+      "level": 11,
+      "growthTime": "8H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Juicy Stem",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 533
+        }
+      ],
+      "icon": "💧",
+      "gathering": {
+        "time": "8H",
+        "experience": 1777,
+        "yields": [],
+        "timeMinutes": 480
+      },
+      "growthTimeMinutes": 480
+    },
+    {
+      "id": "mindbender",
+      "name": "Mindbender",
+      "category": "herbalism",
+      "level": 38,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Mindbender",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 718
+        }
+      ],
+      "icon": "🧠",
+      "gathering": {
+        "time": "6H",
+        "experience": 4291,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "rocky_mushroom",
+      "name": "Rocky Mushroom",
+      "category": "herbalism",
+      "level": 59,
+      "growthTime": null,
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Rocky Cap",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 743
+        }
+      ],
+      "icon": "🪨",
+      "gathering": {
+        "time": "24H",
+        "experience": 2333,
+        "yields": [],
+        "timeMinutes": 1440
+      }
+    },
+    {
+      "id": "rohna_mint",
+      "name": "Rohna Mint",
+      "category": "herbalism",
+      "level": 1,
+      "growthTime": "2H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Refreshing Leaf",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 220
+        }
+      ],
+      "icon": "🌿",
+      "gathering": {
+        "time": "2H",
+        "experience": 4291,
+        "yields": [],
+        "timeMinutes": 120
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "shadow_mushroom",
+      "name": "Shadow Mushroom",
+      "category": "herbalism",
+      "level": 34,
+      "growthTime": "2H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Shadow Stem",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 5105
+        }
+      ],
+      "icon": "🌑",
+      "gathering": {
+        "time": "26H",
+        "experience": 3429,
+        "yields": [],
+        "timeMinutes": 1560
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "toxic_mushroom",
+      "name": "Toxic Mushroom",
+      "category": "herbalism",
+      "level": 23,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Toxic Stem",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 782
+        }
+      ],
+      "icon": "☠️",
+      "gathering": {
+        "time": "30H",
+        "experience": 2277,
+        "yields": [],
+        "timeMinutes": 1800
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "twisted_flower",
+      "name": "Twisted Flower",
+      "category": "herbalism",
+      "level": 48,
+      "growthTime": "8H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Twisted Flower",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 5130
+        }
+      ],
+      "icon": "🌸",
+      "gathering": {
+        "time": "32H",
+        "experience": 3688,
+        "yields": [],
+        "timeMinutes": 1920
+      },
+      "growthTimeMinutes": 480
+    },
+    {
+      "id": "wailing_leaf",
+      "name": "Wailing Leaf",
+      "category": "herbalism",
+      "level": 33,
+      "growthTime": "2H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Wailing Leaf",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 5105
+        }
+      ],
+      "icon": "🍃",
+      "gathering": {
+        "time": "26H",
+        "experience": 3420,
+        "yields": [],
+        "timeMinutes": 1560
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "withered_mushroom",
+      "name": "Withered Mushroom",
+      "category": "herbalism",
+      "level": 39,
+      "growthTime": "9H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Withered Stem",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 725
+        }
+      ],
+      "icon": "🥀",
+      "gathering": {
+        "time": "9H",
+        "experience": 3701,
+        "yields": [],
+        "timeMinutes": 540
+      },
+      "growthTimeMinutes": 540
+    },
+    {
+      "id": "pirates_bliss",
+      "name": "Pirate's Bliss",
+      "category": "herbalism",
+      "level": 6,
+      "growthTime": "12H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Pirate's Bliss",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 50
+        }
+      ],
+      "icon": "🏴‍☠️",
+      "gathering": {
+        "time": "12H",
+        "experience": 2438,
+        "yields": [],
+        "timeMinutes": 720
+      },
+      "growthTimeMinutes": 720
+    },
+    {
+      "id": "pirates_fungi",
+      "name": "Pirate's Fungi",
+      "category": "herbalism",
+      "level": 15,
+      "growthTime": "12H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Pirate's Cap",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 50
+        }
+      ],
+      "icon": "🍄",
+      "gathering": {
+        "time": "12H",
+        "experience": 3644,
+        "yields": [],
+        "timeMinutes": 720
+      },
+      "growthTimeMinutes": 720
+    },
+    {
+      "id": "lizards_delight",
+      "name": "Lizard's Delight",
+      "category": "herbalism",
+      "level": 28,
+      "growthTime": "9H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Lizard's Delight",
+          "min": 3,
+          "max": 6,
+          "avg": 4.5,
+          "unitCost": 56
+        }
+      ],
+      "icon": "🦎",
+      "gathering": {
+        "time": "9H",
+        "experience": 3010,
+        "yields": [],
+        "timeMinutes": 540
+      },
+      "growthTimeMinutes": 540
+    },
+    {
+      "id": "bee_hive",
+      "name": "Bee Hive",
+      "category": "husbandry",
+      "level": 21,
+      "growthTime": "20H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Honey",
+          "min": 12,
+          "max": 24,
+          "avg": 18,
+          "unitCost": 117
+        }
+      ],
+      "icon": "🐝",
+      "gathering": {
+        "time": "44H",
+        "experience": 4310,
+        "yields": [],
+        "timeMinutes": 2640
+      },
+      "growthTimeMinutes": 1200
+    },
+    {
+      "id": "cheese_barrel",
+      "name": "Cheese Barrel",
+      "category": "husbandry",
+      "level": 21,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "1x1",
+      "width": 1,
+      "height": 1,
+      "yields": [
+        {
+          "resource": "Cheese",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 460
+        }
+      ],
+      "icon": "🧀",
+      "gathering": {
+        "time": "30H",
+        "experience": 1598,
+        "yields": [],
+        "timeMinutes": 1800
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "medium_chicken_pen",
+      "name": "Medium Chicken Pen",
+      "category": "husbandry",
+      "level": 30,
+      "growthTime": "1H 30m",
+      "gatheringMultiplier": 3,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Egg",
+          "min": 9,
+          "max": 14,
+          "avg": 11.5,
+          "unitCost": 45
+        },
+        {
+          "resource": "Chicken",
+          "min": 7,
+          "max": 12,
+          "avg": 9.5,
+          "unitCost": 164
+        }
+      ],
+      "icon": "🐔",
+      "gathering": {
+        "time": "1.5H",
+        "experience": 1243,
+        "yields": [],
+        "timeMinutes": 90
+      },
+      "butchering": {
+        "time": "3H",
+        "experience": 4324,
+        "yields": []
+      },
+      "growthTimeMinutes": 90
+    },
+    {
+      "id": "medium_cow_pen",
+      "name": "Medium Cow Pen",
+      "category": "husbandry",
+      "level": 65,
+      "growthTime": "5H",
+      "gatheringMultiplier": 3,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Milk",
+          "min": 8,
+          "max": 11,
+          "avg": 9.5,
+          "unitCost": 122
+        },
+        {
+          "resource": "Beef",
+          "min": 15,
+          "max": 22,
+          "avg": 18.5,
+          "unitCost": 94
+        },
+        {
+          "resource": "Hide",
+          "min": 14,
+          "max": 21,
+          "avg": 17.5,
+          "unitCost": 99
+        }
+      ],
+      "icon": "🐄",
+      "gathering": {
+        "time": "5H",
+        "experience": 1519,
+        "yields": [],
+        "timeMinutes": 300
+      },
+      "butchering": {
+        "time": "10H",
+        "experience": 4500,
+        "yields": []
+      },
+      "growthTimeMinutes": 300
+    },
+    {
+      "id": "medium_goat_pen",
+      "name": "Medium Goat Pen",
+      "category": "husbandry",
+      "level": 50,
+      "growthTime": "2H",
+      "gatheringMultiplier": 3,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Milk",
+          "min": 4,
+          "max": 6,
+          "avg": 5,
+          "unitCost": 76
+        },
+        {
+          "resource": "Wool",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 127
+        },
+        {
+          "resource": "Shank",
+          "min": 8,
+          "max": 14,
+          "avg": 11,
+          "unitCost": 207
+        }
+      ],
+      "icon": "🐐",
+      "gathering": {
+        "time": "2H",
+        "experience": 4810,
+        "yields": [],
+        "timeMinutes": 120
+      },
+      "butchering": {
+        "time": "4H",
+        "experience": 2947,
+        "yields": []
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "medium_hare_pen",
+      "name": "Medium Hare Pen",
+      "category": "husbandry",
+      "level": 35,
+      "growthTime": "1H 30m",
+      "gatheringMultiplier": 3,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Spool Of Hair",
+          "min": 9,
+          "max": 14,
+          "avg": 11.5,
+          "unitCost": 45
+        },
+        {
+          "resource": "Chicken",
+          "min": 7,
+          "max": 12,
+          "avg": 9.5,
+          "unitCost": 164
+        }
+      ],
+      "icon": "🐰",
+      "gathering": {
+        "time": "1.5H",
+        "experience": 3977,
+        "yields": [],
+        "timeMinutes": 90
+      },
+      "butchering": {
+        "time": "3H",
+        "experience": 2369,
+        "yields": []
+      },
+      "growthTimeMinutes": 90
+    },
+    {
+      "id": "medium_pig_pen",
+      "name": "Medium Pig Pen",
+      "category": "husbandry",
+      "level": 40,
+      "growthTime": "4H",
+      "gatheringMultiplier": null,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Shank",
+          "min": 6,
+          "max": 9,
+          "avg": 7.5,
+          "unitCost": 120
+        },
+        {
+          "resource": "Hide",
+          "min": 6,
+          "max": 9,
+          "avg": 7.5,
+          "unitCost": 120
+        }
+      ],
+      "icon": "🐷",
+      "butchering": {
+        "time": "4H",
+        "experience": 4571,
+        "yields": []
+      },
+      "growthTimeMinutes": 240
+    },
+    {
+      "id": "medium_sheep_pen",
+      "name": "Medium Sheep Pen",
+      "category": "husbandry",
+      "level": 60,
+      "growthTime": "3H",
+      "gatheringMultiplier": 3,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Wool",
+          "min": 8,
+          "max": 11,
+          "avg": 9.5,
+          "unitCost": 122
+        },
+        {
+          "resource": "Shank",
+          "min": 18,
+          "max": 27,
+          "avg": 22.5,
+          "unitCost": 155
+        }
+      ],
+      "icon": "🐑",
+      "gathering": {
+        "time": "3H",
+        "experience": 3595,
+        "yields": [],
+        "timeMinutes": 180
+      },
+      "butchering": {
+        "time": "6H",
+        "experience": 1479,
+        "yields": []
+      },
+      "growthTimeMinutes": 180
+    },
+    {
+      "id": "medium_turkey_pen",
+      "name": "Medium Turkey Pen",
+      "category": "husbandry",
+      "level": 55,
+      "growthTime": "6H",
+      "gatheringMultiplier": null,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [
+        {
+          "resource": "Chicken",
+          "min": 9,
+          "max": 13,
+          "avg": 11,
+          "unitCost": 95
+        },
+        {
+          "resource": "Feather",
+          "min": 5,
+          "max": 8,
+          "avg": 6.5,
+          "unitCost": 162
+        }
+      ],
+      "icon": "🦃",
+      "gathering": {
+        "time": null,
+        "experience": 1790,
+        "yields": []
+      },
+      "butchering": {
+        "time": "6H",
+        "experience": 2233,
+        "yields": []
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "small_chicken_pen",
+      "name": "Small Chicken Pen",
+      "category": "husbandry",
+      "level": 5,
+      "growthTime": "1H 30m",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Egg",
+          "min": 4,
+          "max": 6,
+          "avg": 5,
+          "unitCost": 40
+        },
+        {
+          "resource": "Chicken",
+          "min": 3,
+          "max": 5,
+          "avg": 4,
+          "unitCost": 150
+        }
+      ],
+      "icon": "🐔",
+      "gathering": {
+        "time": "1.5H",
+        "experience": 3958,
+        "yields": [],
+        "timeMinutes": 90
+      },
+      "butchering": {
+        "time": "3H",
+        "experience": 4381,
+        "yields": []
+      },
+      "growthTimeMinutes": 90
+    },
+    {
+      "id": "small_cow_pen",
+      "name": "Small Cow Pen",
+      "category": "husbandry",
+      "level": 25,
+      "growthTime": "5H",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Milk",
+          "min": 3,
+          "max": 5,
+          "avg": 4,
+          "unitCost": 130
+        },
+        {
+          "resource": "Beef",
+          "min": 6,
+          "max": 11,
+          "avg": 8.5,
+          "unitCost": 92
+        },
+        {
+          "resource": "Hide",
+          "min": 6,
+          "max": 9,
+          "avg": 7.5,
+          "unitCost": 104
+        }
+      ],
+      "icon": "🐄",
+      "gathering": {
+        "time": "5H",
+        "experience": 2949,
+        "yields": [],
+        "timeMinutes": 300
+      },
+      "butchering": {
+        "time": "10H",
+        "experience": 4775,
+        "yields": []
+      },
+      "growthTimeMinutes": 300
+    },
+    {
+      "id": "small_goat_pen",
+      "name": "Small Goat Pen",
+      "category": "husbandry",
+      "level": 10,
+      "growthTime": "2H",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Milk",
+          "min": 2,
+          "max": 3,
+          "avg": 2.5,
+          "unitCost": 72
+        },
+        {
+          "resource": "Wool",
+          "min": 1,
+          "max": 1,
+          "avg": 1,
+          "unitCost": 180
+        },
+        {
+          "resource": "Shank",
+          "min": 4,
+          "max": 7,
+          "avg": 5.5,
+          "unitCost": 196
+        }
+      ],
+      "icon": "🐐",
+      "gathering": {
+        "time": "2H",
+        "experience": 4780,
+        "yields": [],
+        "timeMinutes": 120
+      },
+      "butchering": {
+        "time": "4H",
+        "experience": 1686,
+        "yields": []
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "small_hare_pen",
+      "name": "Small Hare Pen",
+      "category": "husbandry",
+      "level": 1,
+      "growthTime": "3H",
+      "gatheringMultiplier": null,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Chicken",
+          "min": 3,
+          "max": 5,
+          "avg": 4,
+          "unitCost": 150
+        },
+        {
+          "resource": "Spool Of Hair",
+          "min": 4,
+          "max": 6,
+          "avg": 5,
+          "unitCost": 40
+        }
+      ],
+      "icon": "🐰",
+      "gathering": {
+        "time": "1.5H",
+        "experience": 2399,
+        "yields": [],
+        "timeMinutes": 90
+      },
+      "butchering": {
+        "time": "3H",
+        "experience": 2404,
+        "yields": []
+      },
+      "growthTimeMinutes": 180
+    },
+    {
+      "id": "small_pig_pen",
+      "name": "Small Pig Pen",
+      "category": "husbandry",
+      "level": 1,
+      "growthTime": "4H",
+      "gatheringMultiplier": null,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Shank",
+          "min": 3,
+          "max": 4,
+          "avg": 3.5,
+          "unitCost": 86
+        },
+        {
+          "resource": "Hide",
+          "min": 2,
+          "max": 4,
+          "avg": 3,
+          "unitCost": 100
+        }
+      ],
+      "icon": "🐷",
+      "butchering": {
+        "time": "4H",
+        "experience": 3451,
+        "yields": []
+      },
+      "growthTimeMinutes": 240
+    },
+    {
+      "id": "small_sheep_pen",
+      "name": "Small Sheep Pen",
+      "category": "husbandry",
+      "level": 20,
+      "growthTime": "3H",
+      "gatheringMultiplier": 3,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Wool",
+          "min": 3,
+          "max": 5,
+          "avg": 4,
+          "unitCost": 130
+        },
+        {
+          "resource": "Shank",
+          "min": 8,
+          "max": 12,
+          "avg": 10,
+          "unitCost": 156
+        }
+      ],
+      "icon": "🐑",
+      "gathering": {
+        "time": "3H",
+        "experience": 2583,
+        "yields": [],
+        "timeMinutes": 180
+      },
+      "butchering": {
+        "time": "6H",
+        "experience": 1545,
+        "yields": []
+      },
+      "growthTimeMinutes": 180
+    },
+    {
+      "id": "small_turkey_pen",
+      "name": "Small Turkey Pen",
+      "category": "husbandry",
+      "level": 15,
+      "growthTime": "6H",
+      "gatheringMultiplier": null,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Chicken",
+          "min": 3,
+          "max": 5,
+          "avg": 4,
+          "unitCost": 98
+        },
+        {
+          "resource": "Feather",
+          "min": 2,
+          "max": 5,
+          "avg": 3.5,
+          "unitCost": 111
+        }
+      ],
+      "icon": "🦃",
+      "gathering": {
+        "time": null,
+        "experience": 1805,
+        "yields": []
+      },
+      "butchering": {
+        "time": "6H",
+        "experience": 4124,
+        "yields": []
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "fir_tree",
+      "name": "Fir Tree",
+      "category": "woodcutting",
+      "level": 5,
+      "growthTime": "8H",
+      "gatheringMultiplier": 1,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Small Log",
+          "min": 10,
+          "max": 34,
+          "avg": 22,
+          "unitCost": 55
+        }
+      ],
+      "icon": "🎄",
+      "gathering": {
+        "time": "8H",
+        "experience": 2107,
+        "yields": [],
+        "timeMinutes": 480
+      },
+      "growthTimeMinutes": 480
+    },
+    {
+      "id": "juniper_tree",
+      "name": "Juniper Tree",
+      "category": "woodcutting",
+      "level": 1,
+      "growthTime": "2H",
+      "gatheringMultiplier": 1,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Small Log",
+          "min": 2,
+          "max": 9,
+          "avg": 5.5,
+          "unitCost": 55
+        }
+      ],
+      "icon": "🌲",
+      "gathering": {
+        "time": "2H",
+        "experience": 3489,
+        "yields": [],
+        "timeMinutes": 120
+      },
+      "growthTimeMinutes": 120
+    },
+    {
+      "id": "oak_tree",
+      "name": "Oak Tree",
+      "category": "woodcutting",
+      "level": 20,
+      "growthTime": null,
+      "gatheringMultiplier": 1,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Heavy Log",
+          "min": 16,
+          "max": 32,
+          "avg": 24,
+          "unitCost": 150
+        }
+      ],
+      "icon": "🌳",
+      "gathering": {
+        "time": "24H",
+        "experience": 2155,
+        "yields": [],
+        "timeMinutes": 1440
+      }
+    },
+    {
+      "id": "palm_tree",
+      "name": "Palm Tree",
+      "category": "woodcutting",
+      "level": 10,
+      "growthTime": "6H",
+      "gatheringMultiplier": 1,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Heavy Log",
+          "min": 4,
+          "max": 8,
+          "avg": 6,
+          "unitCost": 150
+        }
+      ],
+      "icon": "🌴",
+      "gathering": {
+        "time": "6H",
+        "experience": 3423,
+        "yields": [],
+        "timeMinutes": 360
+      },
+      "growthTimeMinutes": 360
+    },
+    {
+      "id": "wildleaf_tree",
+      "name": "Wildleaf Tree",
+      "category": "woodcutting",
+      "level": 35,
+      "growthTime": "16H",
+      "gatheringMultiplier": 1,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Sturdy Log",
+          "min": 8,
+          "max": 16,
+          "avg": 12,
+          "unitCost": 200
+        }
+      ],
+      "icon": "🍀",
+      "gathering": {
+        "time": "16H",
+        "experience": 2781,
+        "yields": [],
+        "timeMinutes": 960
+      },
+      "growthTimeMinutes": 960
+    },
+    {
+      "id": "willow_tree",
+      "name": "Willow Tree",
+      "category": "woodcutting",
+      "level": 50,
+      "growthTime": "12H",
+      "gatheringMultiplier": 1,
+      "size": "2x2",
+      "width": 2,
+      "height": 2,
+      "yields": [
+        {
+          "resource": "Fine Log",
+          "min": 5,
+          "max": 10,
+          "avg": 7.5,
+          "unitCost": 240
+        }
+      ],
+      "icon": "🪻",
+      "gathering": {
+        "time": "12H",
+        "experience": 2868,
+        "yields": [],
+        "timeMinutes": 720
+      },
+      "growthTimeMinutes": 720
+    },
+    {
+      "id": "moa_breeding_pen",
+      "name": "Moa Breeding Pen",
+      "category": "breeding",
+      "level": 1,
+      "growthTime": null,
+      "gatheringMultiplier": 1,
+      "size": "3x3",
+      "width": 3,
+      "height": 3,
+      "yields": [],
+      "icon": "🦅",
+      "gathering": {
+        "time": null,
+        "experience": 2128,
+        "yields": []
+      }
+    }
+  ]
+}
