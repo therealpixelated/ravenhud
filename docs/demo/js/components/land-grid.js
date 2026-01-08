@@ -83,10 +83,13 @@ class LandGrid {
     // Create grid wrapper
     const gridWrapper = document.createElement('div');
     gridWrapper.className = 'land-grid-wrapper';
-    gridWrapper.style.width = `${land.width * this.tileSize}px`;
-    gridWrapper.style.height = `${land.height * this.tileSize}px`;
+    const wrapperWidth = land.width * this.tileSize;
+    const wrapperHeight = land.height * this.tileSize;
+    gridWrapper.style.width = `${wrapperWidth}px`;
+    gridWrapper.style.height = `${wrapperHeight}px`;
     gridWrapper.style.position = 'relative';
     gridWrapper.style.background = 'transparent';
+    console.log(`[LandGrid.init] Grid wrapper size: ${wrapperWidth}x${wrapperHeight}px (${land.width}x${land.height} tiles @ ${this.tileSize}px each)`);
 
     // Render all tiles
     this.renderTiles(gridWrapper);
@@ -100,6 +103,25 @@ class LandGrid {
     this.container.appendChild(gridWrapper);
     this.gridWrapper = gridWrapper;
     console.log('[LandGrid.init] Grid rendered successfully - tiles:', this.validTiles.length, 'hasHouse:', land.hasHouse);
+
+    // Add coordinate tooltip for debugging
+    const coordTooltip = document.createElement('div');
+    coordTooltip.id = 'grid-coord-tooltip';
+    coordTooltip.style.cssText = `
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      font-size: 11px;
+      color: #9CA3AF;
+      background: rgba(0,0,0,0.7);
+      padding: 2px 6px;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 100;
+    `;
+    coordTooltip.textContent = 'Hover: -';
+    gridWrapper.appendChild(coordTooltip);
+    this.coordTooltip = coordTooltip;
 
     // Notify about house state
     this.onHouseStateChange({
@@ -738,6 +760,17 @@ class LandGrid {
     const x = parseInt(tile.dataset.x);
     const y = parseInt(tile.dataset.y);
 
+    // Debug: log coordinate once per tile (using a simple cache)
+    const coordKey = `${x},${y}`;
+    if (this._lastHoverCoord !== coordKey) {
+      this._lastHoverCoord = coordKey;
+      console.log(`[LandGrid] Hover tile: (${x}, ${y}) - preview at ${x * this.tileSize}px, ${y * this.tileSize}px`);
+      // Update visual tooltip
+      if (this.coordTooltip) {
+        this.coordTooltip.textContent = `Hover: (${x}, ${y})`;
+      }
+    }
+
     // House placement preview
     if (this.isPlacingHouse) {
       this.renderHousePreview(x, y);
@@ -785,6 +818,10 @@ class LandGrid {
    */
   handleMouseLeave() {
     this.clearPreview();
+    this._lastHoverCoord = null;
+    if (this.coordTooltip) {
+      this.coordTooltip.textContent = 'Hover: -';
+    }
   }
 
   /**

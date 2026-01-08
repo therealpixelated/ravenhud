@@ -3132,6 +3132,25 @@ button:focus-visible {
   min-height: 200px;
 }
 
+/* LandGrid sets this class on its container - must inherit key styles from land-grid-main */
+.land-grid-container {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: auto;
+  padding: var(--space-3);
+  background: var(--bg-darker);
+  border-radius: 6px;
+  min-height: 200px;
+}
+
+/* Land grid wrapper - positioned relative for absolute tile positioning */
+.land-grid-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
 /* Stats Panel (floating bar below grid) */
 .land-stats-panel {
   background: linear-gradient(135deg, rgba(30, 30, 50, 0.95) 0%, rgba(20, 20, 35, 0.98) 100%);
