@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RavenHUD - A companion overlay tool for RavenQuest. Track cosmetics, trophies, tradepacks, and more.">
+  <meta name="keywords" content="RavenQuest, RavenHUD, overlay, companion, tracker, cosmetics, trophies, tradepacks">
+  <meta property="og:title" content="RavenHUD - RavenQuest Companion">
+  <meta property="og:description" content="Track cosmetics, trophies, tradepacks, and more with this always-on-top overlay.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:url" content="https://therealpixelated.github.io/ravenhud">
+  <title>RavenHUD - RavenQuest Companion</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="background-gradient" aria-hidden="true"></div>
+
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="#" class="logo">
+        <img src="assets/logo.png" alt="" aria-hidden="true">
+        <span>RavenHUD</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/therealpixelated/ravenhud" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Open menu">Menu</button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">RavenHUD</h1>
+        <p class="tagline">Track Everything. Play Smarter.</p>
+        <p class="description">
+          An always-on-top overlay tool to track cosmetics, trophies, tradepacks, farming, and more.
+        </p>
+        <div class="cta-buttons">
+          <a href="#download" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download for Windows
+          </a>
+          <a href="#features" class="btn btn-secondary">See Features</a>
+        </div>
+        <p class="version" id="version-info">Loading version...</p>
+      </div>
+      <div class="hero-preview">
+        <img src="assets/gifs/hero-preview.gif" alt="RavenHUD Preview" class="preview-gif">
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2>Features</h2>
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Cosmetics Tracker</h3>
+          <p>Track your collection progress across all cosmetic categories. See what you own, what's missing, and your completion percentage.</p>
+          <div class="feature-preview">
+            <img src="assets/gifs/cosmetics.gif" alt="Cosmetics Tracker Demo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Trophy Tracker</h3>
+          <p>Monitor your trophy achievements. Filter by category, search for specific trophies, and track your hunting progress.</p>
+          <div class="feature-preview">
+            <img src="assets/gifs/trophies.gif" alt="Trophy Tracker Demo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Tradepack Calculator</h3>
+          <p>Optimize your trade routes. Calculate profits, compare destinations, and find the best deals for your tradepacks.</p>
+          <div class="feature-preview">
+            <img src="assets/gifs/tradepacks.gif" alt="Tradepack Calculator Demo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌾</div>
+          <h3>Farming Cards</h3>
+          <p>Interactive guides for crops and animals. See growth times, yields, and optimal farming strategies at a glance.</p>
+          <div class="feature-preview">
+            <img src="assets/gifs/farming.gif" alt="Farming Cards Demo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <h3>Land Simulator</h3>
+          <p>Plan your estate layouts before committing. Test different configurations and optimize your land usage.</p>
+          <div class="feature-preview">
+            <img src="assets/gifs/land-simulator.gif" alt="Land Simulator Demo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Overlay Mode</h3>
+          <p>Always-on-top transparent window that works while you play. Click-through support so it never interferes with gameplay.</p>
+          <div class="feature-preview">
+            <img src="assets/gifs/overlay.gif" alt="Overlay Mode Demo" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download" aria-labelledby="download-heading">
+      <h2 id="download-heading">Download</h2>
+      <div class="download-card">
+        <div class="download-info">
+          <div class="platform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+            <span>Windows</span>
+          </div>
+          <div class="download-details">
+            <p class="filename" id="download-filename">RavenHUD-win32-x64.zip</p>
+            <p class="filesize" id="download-size">~80 MB</p>
+          </div>
+        </div>
+        <a href="https://github.com/therealpixelated/ravenhud/releases" class="btn btn-primary btn-large" id="download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Latest
+        </a>
+      </div>
+      <p class="download-note">
+        Requires Windows 10 or later. No installation needed - just extract and run.
+      </p>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements">
+      <h2>System Requirements</h2>
+      <div class="requirements-grid">
+        <div class="requirement">
+          <strong>OS:</strong> Windows 10 / 11
+        </div>
+        <div class="requirement">
+          <strong>RAM:</strong> 4 GB minimum
+        </div>
+        <div class="requirement">
+          <strong>Storage:</strong> ~150 MB
+        </div>
+        <div class="requirement">
+          <strong>Display:</strong> 1280x720 or higher
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>
+        RavenHUD is a community project made by
+        <a href="https://github.com/therealpixelated" target="_blank" rel="noopener noreferrer">therealpixelated</a>
+      </p>
+      <p class="disclaimer">
+        Not affiliated with Tavernlight Games. Game assets belong to Tavernlight Games.
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/therealpixelated/ravenhud" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/therealpixelated/ravenhud/issues" target="_blank" rel="noopener noreferrer">Report Bug</a>
+        <a href="https://discord.gg/ravenquest" target="_blank" rel="noopener noreferrer">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
