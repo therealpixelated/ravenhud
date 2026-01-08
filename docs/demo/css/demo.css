@@ -68,6 +68,17 @@
   --color-success: var(--game-text-green);
   --color-warning: var(--game-gold);
   --color-error: var(--game-text-red);
+  --color-error-bg: #ffdede;
+  --color-success-bg: #d9ffe9;
+
+  /* Additional Accent Colors */
+  --game-orange: #e67e22;
+  --game-bg-purple: #2d2d44;
+  --game-gold-dark: #8b6914;
+  --game-gold-light: #e6c65c;
+  --game-bg-warm: #5d4037;
+  --game-bg-taupe: #5C4A3D;
+  --game-bg-taupe-hover: #6D5A4D;
 
   /* Spacing Scale */
   --space-1: 4px;
@@ -232,6 +243,21 @@ body {
   color: var(--game-gold-bright);
   box-shadow: inset 0 1px 0 rgba(201, 168, 76, 0.2);
   border-bottom: 2px solid var(--game-gold-bright);
+}
+
+.tab-button.disabled,
+.tab-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  color: var(--text-disabled);
+}
+
+.tab-button.disabled:hover,
+.tab-button:disabled:hover {
+  border-color: var(--game-border-bronze);
+  color: var(--text-disabled);
+  background: linear-gradient(180deg, var(--game-bg-light) 0%, var(--game-bg-base) 100%);
 }
 
 .no-drag {
@@ -412,6 +438,10 @@ body {
 .btn-small:focus-visible,
 .btn-secondary:focus-visible,
 .saved-layout:focus-visible,
+.land-checkbox:focus-visible,
+.nft-input:focus-visible,
+.settings-select:focus-visible,
+.settings-input:focus-visible,
 select:focus-visible,
 input:focus-visible,
 button:focus-visible {
@@ -561,8 +591,8 @@ button:focus-visible {
 
 .cosmetic-tab.active {
   background: rgba(212, 160, 23, 0.15);
-  border-color: #d4a017;
-  color: #d4a017;
+  border-color: var(--game-gold);
+  color: var(--game-gold);
 }
 
 .filters {
@@ -632,7 +662,7 @@ button:focus-visible {
 }
 
 .filter-group select option {
-  background: #2d2d44;
+  background: var(--game-bg-purple);
   color: var(--game-text-cream);
 }
 
@@ -699,7 +729,7 @@ button:focus-visible {
 }
 
 .trophy-creature {
-  color: #e67e22;
+  color: var(--game-orange);
   font-weight: 500;
 }
 
@@ -1499,16 +1529,16 @@ button:focus-visible {
   color: var(--game-text-blue);
 }
 .toast-error {
-  border-color: #e74c3c;
-  color: #ffdede;
+  border-color: var(--color-error);
+  color: var(--color-error-bg);
 }
 .toast-error::before {
   content: '✕';
-  color: #e74c3c;
+  color: var(--color-error);
 }
 .toast-success {
   border-color: var(--game-text-green);
-  color: #d9ffe9;
+  color: var(--color-success-bg);
 }
 .toast-success::before {
   content: '✓';
@@ -3304,7 +3334,7 @@ button:focus-visible {
 }
 
 .optimized-mini-cell {
-  background: #5C4A3D; /* Warm taupe - better visibility */
+  background: var(--tile-farmland);
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle grid lines */
 }
@@ -3312,15 +3342,15 @@ button:focus-visible {
 /* Size-based colors for mini grid visualization
    Colorblind-safe: Amber, Blue, Purple */
 .optimized-mini-cell.size-1 {
-  background: #FBBF24; /* Amber for 1x1 */
+  background: var(--tile-crop-1x1-border);
 }
 
 .optimized-mini-cell.size-2 {
-  background: #3B82F6; /* Blue for 2x2 */
+  background: var(--tile-crop-2x2-border);
 }
 
 .optimized-mini-cell.size-3 {
-  background: #A855F7; /* Purple for 3x3 */
+  background: var(--tile-crop-3x3-border);
 }
 
 .optimized-mini-cell.filled {
@@ -3332,11 +3362,11 @@ button:focus-visible {
 }
 
 .optimized-mini-cell.house {
-  background: #6B7280; /* Cool gray */
+  background: var(--tile-house);
 }
 
 .optimized-mini-cell.door-clearance {
-  background: #B45309; /* Dark amber - distinct from farmland */
+  background: var(--tile-door);
 }
 
 .optimized-no-land {
@@ -3478,8 +3508,8 @@ button:focus-visible {
   padding: var(--space-2) var(--space-3);
   font-size: var(--font-size-xs);
   font-weight: 600;
-  background: linear-gradient(180deg, var(--color-gold) 0%, #8b6914 100%);
-  color: #1a1a2e;
+  background: linear-gradient(180deg, var(--color-gold) 0%, var(--game-gold-dark) 100%);
+  color: var(--game-bg-dark);
   border: 1px solid var(--color-gold);
   border-radius: 4px;
   cursor: pointer;
@@ -3490,7 +3520,7 @@ button:focus-visible {
 }
 
 .btn-small:hover {
-  background: linear-gradient(180deg, #e6c65c 0%, var(--color-gold) 100%);
+  background: linear-gradient(180deg, var(--game-gold-light) 0%, var(--color-gold) 100%);
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
@@ -3770,7 +3800,7 @@ button:focus-visible {
 }
 
 .land-tile:hover {
-  background: #6D5A4D !important; /* Lighter warm taupe on hover */
+  background: var(--game-bg-taupe-hover) !important;
 }
 
 .placed-item {
@@ -3864,8 +3894,8 @@ button:focus-visible {
 }
 
 .btn-house-place {
-  background: #5d4037;
-  color: #fff;
+  background: var(--game-bg-warm);
+  color: var(--game-text-white);
 }
 
 .btn-house-place:hover:not(:disabled) {
@@ -5745,8 +5775,19 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-3);
   padding: var(--space-8);
   color: var(--text-muted);
+}
+
+.loading-spinner::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--game-border-bronze);
+  border-top-color: var(--game-gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
 /* Error Message */

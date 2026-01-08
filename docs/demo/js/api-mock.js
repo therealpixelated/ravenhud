@@ -186,7 +186,6 @@ window.electronAPI = {
     };
     // Dispatch custom event so other tabs can refresh their lands summary
     window.dispatchEvent(new CustomEvent('ownedLandsUpdated', { detail: mockOwnedLands }));
-    console.log('[API Mock] Owned lands updated, dispatched event. Total tiles:', mockOwnedLands.totalTiles.total);
     return { success: true };
   },
 
@@ -337,8 +336,6 @@ window.electronAPI = {
 
   // === Farming Simulation ===
   simulateFarmingSelection: async ({ selectedCrops = [], ownedLands = {}, timeWindowHours = 48, cropWeights = {} }) => {
-    console.log('[API Mock] simulateFarmingSelection called:', { selectedCrops, ownedLands, timeWindowHours });
-
     if (!selectedCrops.length) {
       return {
         summary: { totalLands: 0, totalTilesUsed: 0, totalTilesAvailable: 0 },
@@ -395,8 +392,8 @@ window.electronAPI = {
               landType,
               name: `${landInfo.name} #${i + 1}`,
               tiles: LAND_TILES[landType] || landInfo.tiles?.length || 0,
-              width: landInfo.width,
-              height: landInfo.height,
+              width: landInfo.width || 8,
+              height: landInfo.height || 8,
               hasHouse: landInfo.hasHouse || false
             });
           }
@@ -534,7 +531,6 @@ window.electronAPI = {
 
   // === UI Helpers ===
   showToast: (message, type) => {
-    console.log(`[Toast ${type}] ${message}`);
     // Use UIHelpers if available
     if (window.UIHelpers?.showToast) {
       window.UIHelpers.showToast(message, type);

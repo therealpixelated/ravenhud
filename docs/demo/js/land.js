@@ -16,14 +16,10 @@ let landStatsPanel = null;
  * Initialize the land simulator
  */
 async function initLandSimulator() {
-  console.log('[Land] initLandSimulator starting...');
-
   // Initialize components
   const gridContainer = document.getElementById('landGrid');
   const sidebarContainer = document.getElementById('landSidebar');
   const optimizedContainer = document.getElementById('landOptimized');
-
-  console.log('[Land] Containers found - grid:', !!gridContainer, 'sidebar:', !!sidebarContainer, 'optimized:', !!optimizedContainer);
 
   if (!gridContainer || !sidebarContainer) {
     console.error('[Land] Land simulator containers not found!');
@@ -37,14 +33,12 @@ async function initLandSimulator() {
   });
 
   // Create grid (no land type selected yet)
-  console.log('[Land] Creating LandGrid with landType: null');
   landGrid = new LandGrid(gridContainer, {
     landType: null,
     onGridChange: handleGridChange,
     onItemDeselect: handleItemDeselect,
     onHouseStateChange: handleHouseStateChange
   });
-  console.log('[Land] LandGrid created, instance:', !!landGrid);
 
   // Create optimized layouts panel
   if (optimizedContainer) {
@@ -75,17 +69,13 @@ async function initLandSimulator() {
  * Setup event listeners
  */
 function setupEventListeners() {
-  console.log('[Land] setupEventListeners called');
-
   // Land type selector - single delegated listener on document
   // (removed duplicate direct listener that was causing double grid creation)
   document.addEventListener('change', (e) => {
     if (e.target && e.target.id === 'landTypeSelect') {
-      console.log('[Land] Change event for landTypeSelect');
       handleLandTypeChange(e);
     }
   });
-  console.log('[Land] Change listener attached for #landTypeSelect');
 
   // Clear grid button
   const clearGridBtn = document.getElementById('clearGridBtn');
@@ -111,7 +101,6 @@ function setupEventListeners() {
  */
 async function handleLandTypeChange(e) {
   const landType = e.target.value;
-  console.log('[Land] handleLandTypeChange called with:', landType);
 
   if (!landType) {
     currentLandType = null;
@@ -130,10 +119,8 @@ async function handleLandTypeChange(e) {
   currentLandType = landType;
 
   if (landGrid) {
-    console.log('[Land] Calling landGrid.setLandType with:', landType);
     try {
       await landGrid.setLandType(landType);
-      console.log('[Land] landGrid.setLandType completed');
     } catch (err) {
       console.error('[Land] landGrid.setLandType FAILED:', err);
     }
@@ -211,6 +198,8 @@ function handleLayoutLoad(layout) {
   if (landGrid) {
     landGrid.setLandType(layout.landType).then(() => {
       landGrid.loadLayout(layout);
+    }).catch((error) => {
+      console.error('[Land] Failed to load layout:', error);
     });
   }
 }

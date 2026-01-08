@@ -44,7 +44,6 @@ async function initFarming() {
 
     // Listen for owned lands updates from other tabs
     window.addEventListener('ownedLandsUpdated', () => {
-      console.log('[Farming] Received ownedLandsUpdated event, refreshing lands summary');
       renderFarmingLandsSummary();
     });
   } catch (err) {
@@ -430,10 +429,13 @@ function createFarmingSimulationModal() {
   farmingSimulationModal = document.createElement('div');
   farmingSimulationModal.id = 'farmingSimulationModal';
   farmingSimulationModal.className = 'modal-overlay hidden';
+  farmingSimulationModal.setAttribute('role', 'dialog');
+  farmingSimulationModal.setAttribute('aria-modal', 'true');
+  farmingSimulationModal.setAttribute('aria-labelledby', 'farmingSimulationModalTitle');
   farmingSimulationModal.innerHTML = `
     <div class="modal-content simulation-modal">
       <div class="modal-header">
-        <h2>Farming Simulation</h2>
+        <h2 id="farmingSimulationModalTitle">Farming Simulation</h2>
         <button class="modal-close" aria-label="Close modal">&times;</button>
       </div>
       <div class="modal-body" id="farmingSimulationModalBody">

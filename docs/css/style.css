@@ -11,7 +11,7 @@
 
   --text-primary: #e8dcc8;
   --text-secondary: #a89888;
-  --text-muted: #6a6058;
+  --text-muted: #8a8078; /* Improved contrast: 4.5:1 on dark bg */
 
   --accent-primary: #c9a959;
   --accent-secondary: #b8954a;
@@ -119,6 +119,8 @@ nav {
   width: 52px;
   height: 52px;
   border-radius: 10px;
+  transform: scale(2.25);
+  transform-origin: left center;
 }
 
 .nav-links {
@@ -263,12 +265,17 @@ nav {
 }
 
 .hero h1 {
-  font-size: 4rem;
-  font-weight: 800;
-  color: var(--accent-primary);
-  text-shadow: 0 0 60px rgba(201, 169, 89, 0.5);
   margin-bottom: 16px;
   line-height: 1.1;
+  text-align: center;
+}
+
+.hero-logo {
+  height: 200px;
+  width: auto;
+  filter: drop-shadow(0 0 40px rgba(201, 169, 89, 0.4));
+  display: inline-block;
+  transform: translateX(-40%);
 }
 
 .tagline {
@@ -553,14 +560,14 @@ footer {
     max-width: 100%;
   }
   
-  .hero h1 {
-    font-size: 3rem;
+  .hero-logo {
+    height: 160px;
   }
-  
+
   .cta-buttons {
     justify-content: center;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
@@ -575,8 +582,8 @@ footer {
     display: block;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
+  .hero-logo {
+    height: 120px;
   }
 
   .tagline {
@@ -614,4 +621,23 @@ footer {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-preview {
+    transform: none !important;
+  }
 }

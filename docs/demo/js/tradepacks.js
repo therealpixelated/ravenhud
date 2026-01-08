@@ -40,7 +40,6 @@ async function initTradepacks() {
 
     // Listen for owned lands updates from other tabs
     window.addEventListener('ownedLandsUpdated', () => {
-      console.log('[Tradepacks] Received ownedLandsUpdated event, refreshing lands summary');
       renderLandsSummary();
     });
   } catch (error) {
@@ -374,11 +373,14 @@ function createSimulationModal() {
   simulationModal = document.createElement('div');
   simulationModal.id = 'simulationModal';
   simulationModal.className = 'modal-overlay hidden';
+  simulationModal.setAttribute('role', 'dialog');
+  simulationModal.setAttribute('aria-modal', 'true');
+  simulationModal.setAttribute('aria-labelledby', 'simulationModalTitle');
   simulationModal.innerHTML = `
     <div class="modal-content simulation-modal">
       <div class="modal-header">
-        <h2>Land Simulation</h2>
-        <button class="modal-close" id="closeSimulationModal">&times;</button>
+        <h2 id="simulationModalTitle">Land Simulation</h2>
+        <button class="modal-close" id="closeSimulationModal" aria-label="Close modal">&times;</button>
       </div>
       <div class="modal-body" id="simulationModalBody">
         <div class="loading-spinner">Calculating optimal layouts...</div>
@@ -388,7 +390,7 @@ function createSimulationModal() {
 
   document.body.appendChild(simulationModal);
 
-  document.getElementById('closeSimulationModal').addEventListener('click', closeSimulationModal);
+  document.getElementById('closeSimulationModal')?.addEventListener('click', closeSimulationModal);
   simulationModal.addEventListener('click', (e) => {
     if (e.target === simulationModal) closeSimulationModal();
   });
