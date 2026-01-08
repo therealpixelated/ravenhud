@@ -86,11 +86,46 @@
       right: 20px;
       z-index: 9999;
     }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #c9a959;
+      color: #1a1614;
+      padding: 8px 16px;
+      z-index: 10000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: top 0.15s ease;
+    }
+
+    .skip-link:focus,
+    .skip-link:focus-visible {
+      top: 0;
+    }
+
+    /* Visually hidden - for screen readers only */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 <body class="background-gradient">
+  <!-- Skip Link for Accessibility -->
+  <a href="#tab-land" class="skip-link">Skip to main content</a>
+
   <!-- Demo Banner -->
-  <div class="demo-banner-top">
+  <div class="demo-banner-top" role="banner">
     <span>🎮 This is a demo preview. Some features are limited.</span>
     <a href="../index.html#download">Download Full App</a>
     <a href="../index.html">← Back to Home</a>
@@ -99,52 +134,58 @@
   <!-- Toast Container -->
   <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
-  <div class="app">
+  <main class="app">
     <!-- Tab Navigation -->
-    <div class="top-nav" role="tablist" aria-label="Primary Tabs">
+    <nav class="top-nav" role="tablist" aria-label="Primary Tabs">
       <button
+        type="button"
         id="land-tab"
         class="tab-button active"
         role="tab"
         aria-selected="true"
         aria-controls="tab-land"
+        tabindex="0"
         data-tab="land"
       >
         🏡 Land Simulator
       </button>
       <button
+        type="button"
         id="tradepacks-tab"
         class="tab-button"
         role="tab"
         aria-selected="false"
         aria-controls="tab-tradepacks"
+        tabindex="-1"
         data-tab="tradepacks"
       >
         📦 Tradepack Calculator
       </button>
       <button
+        type="button"
         id="farming-tab"
         class="tab-button"
         role="tab"
         aria-selected="false"
         aria-controls="tab-farming"
+        tabindex="-1"
         data-tab="farming"
       >
         🌾 Farming Calculator
       </button>
-      <button class="tab-button disabled" role="tab" disabled aria-disabled="true" title="Available in desktop app only">
+      <button type="button" class="tab-button disabled" role="tab" aria-selected="false" disabled title="Available in desktop app only" data-tab="trophies">
         🏆 Trophies (Desktop)
       </button>
-      <button class="tab-button disabled" role="tab" disabled aria-disabled="true" title="Available in desktop app only">
+      <button type="button" class="tab-button disabled" role="tab" aria-selected="false" disabled title="Available in desktop app only" data-tab="cosmetics">
         👗 Cosmetics (Desktop)
       </button>
-      <button class="tab-button disabled" role="tab" disabled aria-disabled="true" title="Available in desktop app only">
+      <button type="button" class="tab-button disabled" role="tab" aria-selected="false" disabled title="Available in desktop app only" data-tab="creatures">
         🐺 Creatures (Desktop)
       </button>
-      <button class="tab-button disabled" role="tab" disabled aria-disabled="true" title="Available in desktop app only">
+      <button type="button" class="tab-button disabled" role="tab" aria-selected="false" disabled title="Available in desktop app only" data-tab="events">
         ⚡ Events (Desktop)
       </button>
-    </div>
+    </nav>
 
     <!-- Land Simulator Tab -->
     <section
@@ -152,6 +193,7 @@
       class="tab-section active"
       role="tabpanel"
       aria-labelledby="land-tab"
+      tabindex="0"
     >
       <div class="land-simulator">
         <!-- Owned Lands Configuration -->
@@ -194,22 +236,22 @@
               <div class="land-input-row">
                 <label for="ownNftSmall">Small (10x10)</label>
                 <div class="input-with-tiles">
-                  <input type="number" id="ownNftSmall" min="0" max="7" value="0">
-                  <span class="tile-count">100 tiles each</span>
+                  <input type="number" id="ownNftSmall" min="0" max="7" value="0" step="1" aria-describedby="nftSmallTiles">
+                  <span class="tile-count" id="nftSmallTiles">100 tiles each</span>
                 </div>
               </div>
               <div class="land-input-row">
                 <label for="ownNftMedium">Medium (12x12)</label>
                 <div class="input-with-tiles">
-                  <input type="number" id="ownNftMedium" min="0" max="7" value="0">
-                  <span class="tile-count">144 tiles each</span>
+                  <input type="number" id="ownNftMedium" min="0" max="7" value="0" step="1" aria-describedby="nftMediumTiles">
+                  <span class="tile-count" id="nftMediumTiles">144 tiles each</span>
                 </div>
               </div>
               <div class="land-input-row">
                 <label for="ownNftLarge">Large (15x15)</label>
                 <div class="input-with-tiles">
-                  <input type="number" id="ownNftLarge" min="0" max="7" value="0">
-                  <span class="tile-count">225 tiles each</span>
+                  <input type="number" id="ownNftLarge" min="0" max="7" value="0" step="1" aria-describedby="nftLargeTiles">
+                  <span class="tile-count" id="nftLargeTiles">225 tiles each</span>
                 </div>
               </div>
             </div>
@@ -219,8 +261,8 @@
         <div class="land-controls">
           <div class="control-group">
             <label for="landTypeSelect">Land Type:</label>
-            <select id="landTypeSelect" aria-label="Select land type for simulation">
-              <option value="">Select land type...</option>
+            <select id="landTypeSelect">
+              <option value="" disabled selected>Select land type...</option>
               <optgroup label="Community Lands">
                 <option value="SMALL_COMMUNITY">Small Community (8x7, 56 tiles)</option>
                 <option value="MEDIUM_COMMUNITY">Medium Community (L-shaped, 91 tiles)</option>
@@ -234,7 +276,7 @@
             </select>
           </div>
           <div class="control-actions">
-            <button id="clearGridBtn" class="btn-secondary">Clear Grid</button>
+            <button type="button" id="clearGridBtn" class="btn-secondary">Clear Grid</button>
           </div>
         </div>
 
@@ -255,6 +297,7 @@
       class="tab-section"
       role="tabpanel"
       aria-labelledby="tradepacks-tab"
+      tabindex="0"
     >
       <div class="container tradepacks-container">
         <!-- Your Lands Summary Panel -->
@@ -263,7 +306,7 @@
           <div class="lands-summary-content" id="landsSummaryContent">
             <div class="lands-summary-loading">Loading...</div>
           </div>
-          <button class="btn-small btn-secondary" id="configureLandsBtn">
+          <button type="button" class="btn-small btn-secondary" id="configureLandsBtn">
             Configure Lands
           </button>
         </div>
@@ -277,12 +320,11 @@
                 id="tradepackSearch"
                 type="text"
                 placeholder="Search tradepacks or materials..."
-                aria-label="Search tradepacks or materials"
               />
             </div>
             <div class="filter-group">
               <label for="tradepackSort">Sort By:</label>
-              <select id="tradepackSort" aria-label="Sort tradepacks by">
+              <select id="tradepackSort">
                 <option value="name">Name</option>
                 <option value="total_cost">Base Value</option>
               </select>
@@ -308,6 +350,7 @@
       class="tab-section"
       role="tabpanel"
       aria-labelledby="farming-tab"
+      tabindex="0"
     >
       <div class="container farming-container">
         <!-- Your Lands Summary Panel -->
@@ -316,7 +359,7 @@
           <div class="lands-summary-content" id="farmingLandsSummaryContent">
             <div class="lands-summary-loading">Loading...</div>
           </div>
-          <button class="btn-small btn-secondary" id="farmingConfigureLandsBtn">
+          <button type="button" class="btn-small btn-secondary" id="farmingConfigureLandsBtn">
             Configure Lands
           </button>
         </div>
@@ -327,15 +370,16 @@
 
           <div class="farming-filters">
             <div class="farming-search">
+              <label for="cropSearch" class="visually-hidden">Search crops</label>
               <input
                 type="text"
                 id="cropSearch"
                 placeholder="Search crops..."
-                aria-label="Search crops"
               />
             </div>
             <div class="farming-category">
-              <select id="cropCategoryFilter" aria-label="Filter by category">
+              <label for="cropCategoryFilter" class="visually-hidden">Filter by category</label>
+              <select id="cropCategoryFilter">
                 <option value="all">All Categories</option>
                 <option value="farming">Farming</option>
                 <option value="husbandry">Husbandry</option>
@@ -358,32 +402,32 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 
-  <!-- Scripts - Load in correct order -->
+  <!-- Scripts - Load in correct order with defer -->
   <!-- Utilities first -->
-  <script src="js/utils/debounce.js"></script>
-  <script src="js/utils/ui-helpers.js"></script>
-  <script src="js/utils/crop-icons.js"></script>
-  <script src="js/utils/constants.js"></script>
-  <script src="js/utils/land-layout-utils.js"></script>
+  <script src="js/utils/debounce.js" defer></script>
+  <script src="js/utils/ui-helpers.js" defer></script>
+  <script src="js/utils/crop-icons.js" defer></script>
+  <script src="js/utils/constants.js" defer></script>
+  <script src="js/utils/land-layout-utils.js" defer></script>
 
   <!-- Components -->
-  <script src="js/components/material-tooltip.js"></script>
-  <script src="js/components/land-grid.js"></script>
-  <script src="js/components/land-sidebar.js"></script>
-  <script src="js/components/land-optimized.js"></script>
+  <script src="js/components/material-tooltip.js" defer></script>
+  <script src="js/components/land-grid.js" defer></script>
+  <script src="js/components/land-sidebar.js" defer></script>
+  <script src="js/components/land-optimized.js" defer></script>
 
   <!-- Handlers (browser-compatible ports) -->
-  <script src="js/handlers/land-handlers.js"></script>
+  <script src="js/handlers/land-handlers.js" defer></script>
 
   <!-- API Mock (must load after handlers) -->
-  <script src="js/api-mock.js"></script>
+  <script src="js/api-mock.js" defer></script>
 
   <!-- Main modules -->
-  <script src="js/tabs.js"></script>
-  <script src="js/land.js"></script>
-  <script src="js/tradepacks.js"></script>
-  <script src="js/farming.js"></script>
+  <script src="js/tabs.js" defer></script>
+  <script src="js/land.js" defer></script>
+  <script src="js/tradepacks.js" defer></script>
+  <script src="js/farming.js" defer></script>
 </body>
 </html>

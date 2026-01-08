@@ -1,12 +1,16 @@
 {
   "metadata": {
+    "version": "1.1.0",
+    "description": "Tradepack and intermediate item recipes for the trading system",
     "source": "Scraped game data",
-    "lastUpdated": "2026-01-07",
+    "lastUpdated": "2026-01-08",
     "notes": [
       "Tradepacks are deliverable goods for the trading system",
       "Intermediates are crafted materials used in tradepack recipes",
       "Some intermediate recipes may have circular references that need verification",
-      "total_cost values are in silver"
+      "total_cost values are in silver",
+      "topProfit is a placeholder value (52323) pending real calculation",
+      "destinations array is empty pending route data"
     ]
   },
   "category": "tradepacks",
@@ -216,7 +220,10 @@
           "item": "Cheese"
         }
       ],
-      "total_cost": 23360
+      "total_cost": 23360,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/butchers-bundle.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "campfire_roast",
@@ -667,7 +674,10 @@
           "item": "Fungal Dust"
         }
       ],
-      "total_cost": null
+      "total_cost": null,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/ocean-stimulants.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "pickled_vegetables",
@@ -910,7 +920,10 @@
           "item": "Shank"
         }
       ],
-      "total_cost": 34648
+      "total_cost": 34648,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/shepherds-feast.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "slums_provisions",
@@ -965,7 +978,10 @@
           "item": "Ground Flour"
         }
       ],
-      "total_cost": 106030
+      "total_cost": 106030,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/spiced-pumpkin-pie.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "sweet_honeys",
@@ -976,7 +992,10 @@
           "item": "Honey"
         }
       ],
-      "total_cost": 53860
+      "total_cost": 53860,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/sweet-honeys.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "strawberry_cakes",
@@ -1087,7 +1106,10 @@
           "item": "Onion"
         }
       ],
-      "total_cost": 78325
+      "total_cost": 78325,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/dry-stem-feast.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "bloody_bud_bundle",
@@ -1102,7 +1124,10 @@
           "item": "Feather"
         }
       ],
-      "total_cost": 65901
+      "total_cost": 65901,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/bloody-bud-bundle.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "juicy_roots_pack",
@@ -1113,7 +1138,10 @@
           "item": "Feather"
         }
       ],
-      "total_cost": 74280
+      "total_cost": 74280,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/juicy-roots-pack.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "juicy_stem_bundle",
@@ -1124,7 +1152,10 @@
           "item": "Toxic Stem"
         }
       ],
-      "total_cost": 96775
+      "total_cost": 96775,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/juicy-stem-bundle.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "yornish_salt",
@@ -1135,7 +1166,10 @@
           "item": "Salt"
         }
       ],
-      "total_cost": 73875
+      "total_cost": 73875,
+      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/yornish-salt.png",
+      "topProfit": null,
+      "destinations": []
     },
     {
       "id": "widows_box",
@@ -1320,16 +1354,7 @@
       "id": "kabbars_omelets",
       "name": "Kabbar's Omelets",
       "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/kabbars-omelets.png",
-      "topProfit": 52323,
-      "destinations": [],
-      "materials": [],
-      "total_cost": null
-    },
-    {
-      "id": "oceanic_stimulants",
-      "name": "Oceanic Stimulants",
-      "imageUrl": "https://api.ravenguardian.com/cdn/tradepacks/oceanic-stimulants.png",
-      "topProfit": 52323,
+      "topProfit": null,
       "destinations": [],
       "materials": [],
       "total_cost": null
@@ -1606,6 +1631,6 @@
       "note": "Base herbalism resource - no crafting recipe"
     }
   ],
-  "tradepackCount": 62,
+  "tradepackCount": 61,
   "intermediateCount": 26
 }

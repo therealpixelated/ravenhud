@@ -185,7 +185,7 @@ function initLazyLoading() {
  * Add header background on scroll
  */
 function initHeaderScroll() {
-  const header = document.querySelector('header');
+  const header = document.querySelector('.site-header');
   if (!header) return;
 
   const handleScroll = throttle(() => {

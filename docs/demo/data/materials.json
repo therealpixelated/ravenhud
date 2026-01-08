@@ -1,10 +1,15 @@
 {
   "metadata": {
-    "version": "1.0.0",
-    "lastUpdated": "2026-01-02",
+    "version": "1.1.0",
+    "lastUpdated": "2026-01-08",
     "source": "https://ravenquest.wiki/materials",
     "itemCount": 1094,
-    "description": "Crafting materials and recipes for RavenQuest Companion"
+    "description": "Crafting materials and recipes for RavenQuest Companion",
+    "knownIssues": [
+      "46 items have exp as string (e.g. 'Exp 4,200xp 2.73 /xp') instead of number - needs parsing",
+      "13 high-level items (61-75) have tax: 1 which may be placeholder data",
+      "Some items missing sourceUrl/url fields"
+    ]
   },
   "category": "materials",
   "items": [

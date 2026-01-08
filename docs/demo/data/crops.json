@@ -1,14 +1,16 @@
 {
   "metadata": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Crop growth data for land optimization in RavenQuest Companion",
-    "lastUpdated": "2026-01-01",
+    "lastUpdated": "2026-01-08",
     "source": "https://ravenquest.wiki/farm-spreadsheet",
     "notes": "Updated schema with gathering/butchering sections. Experience and detailed yields to be filled manually from in-game data.",
     "schema": {
       "gathering": "Repeatable harvest data (time, experience, yields)",
       "butchering": "One-time harvest data for animals (time, experience, yields)",
-      "legacy": "growthTime and yields fields kept for backward compatibility"
+      "legacy": "growthTime and yields fields kept for backward compatibility",
+      "size": "String format (e.g. '2x2') for display, width/height for calculations",
+      "timeMinutes": "Canonical time in minutes, human-readable time field is for display only"
     }
   },
   "categories": {
