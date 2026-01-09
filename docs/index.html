@@ -40,7 +40,8 @@
       <div class="nav-links" id="nav-links">
         <a href="#features" class="nav-link">Features</a>
         <a href="#download" class="nav-link">Download</a>
-        <a href="https://github.com/therealpixelated/ravenhud" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#security" class="nav-link">Security</a>
+        <a href="https://github.com/Pix-Elated/ravenhud" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
       <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links" aria-haspopup="true">Menu</button>
     </nav>
@@ -206,7 +207,7 @@
               <p class="filesize" id="installer-size">~80 MB</p>
             </div>
           </div>
-          <a href="https://github.com/therealpixelated/ravenhud/releases" class="btn btn-primary btn-large" id="installer-btn">
+          <a href="https://github.com/Pix-Elated/ravenhud/releases" class="btn btn-primary btn-large" id="installer-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Download Installer
           </a>
@@ -225,7 +226,7 @@
               <p class="filesize" id="portable-size">~80 MB</p>
             </div>
           </div>
-          <a href="https://github.com/therealpixelated/ravenhud/releases" class="btn btn-secondary btn-large" id="portable-btn">
+          <a href="https://github.com/Pix-Elated/ravenhud/releases" class="btn btn-secondary btn-large" id="portable-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Download ZIP
           </a>
@@ -256,6 +257,55 @@
         </div>
       </div>
     </section>
+
+    <!-- Security Section -->
+    <section id="security" class="security" aria-labelledby="security-heading">
+      <h2 id="security-heading">Security & Transparency</h2>
+      <p class="security-intro">Every release is automatically verified for your safety.</p>
+
+      <div class="security-badges">
+        <a href="https://scorecard.dev/viewer/?uri=github.com/Pix-Elated/ravenhud" target="_blank" rel="noopener noreferrer">
+          <img src="https://api.scorecard.dev/projects/github.com/Pix-Elated/ravenhud/badge" alt="OpenSSF Scorecard">
+        </a>
+        <img src="https://img.shields.io/badge/Code%20Signed-Azure%20Trusted%20Signing-0078D4?logo=microsoft" alt="Code Signed">
+        <img src="https://img.shields.io/badge/VirusTotal-Scanned-394EFF?logo=virustotal" alt="VirusTotal Scanned">
+      </div>
+
+      <div class="security-grid">
+        <article class="security-card">
+          <div class="security-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>Code Signing</h3>
+          <p>Every .exe is signed with Microsoft Azure Trusted Signing. Right-click the installer, select Properties, then Digital Signatures to verify.</p>
+        </article>
+
+        <article class="security-card">
+          <div class="security-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>VirusTotal Scan</h3>
+          <p>Each release is scanned against 70+ antivirus engines. View the scan link in release notes or upload to virustotal.com yourself.</p>
+        </article>
+
+        <article class="security-card">
+          <div class="security-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <h3>Open Source</h3>
+          <p>Source code is available for review. Check our <a href="https://scorecard.dev/viewer/?uri=github.com/Pix-Elated/ravenhud" target="_blank" rel="noopener noreferrer">OSSF Scorecard</a> for security best practices.</p>
+        </article>
+      </div>
+
+      <div class="verify-steps">
+        <h3>How to Verify Your Download</h3>
+        <ol>
+          <li><strong>Check signature:</strong> Right-click .exe &rarr; Properties &rarr; Digital Signatures &rarr; Should show "Pix-Elated"</li>
+          <li><strong>VirusTotal:</strong> Each release includes a link to the scan results in the release notes</li>
+          <li><strong>Hash check:</strong> Compare the SHA256 hash shown in release notes</li>
+        </ol>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -268,8 +318,8 @@
         Not affiliated with Tavernlight Games. Game assets belong to Tavernlight Games.
       </p>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://github.com/therealpixelated/ravenhud" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/therealpixelated/ravenhud/issues" target="_blank" rel="noopener noreferrer">Report Bug</a>
+        <a href="https://github.com/Pix-Elated/ravenhud" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/Pix-Elated/ravenhud/issues" target="_blank" rel="noopener noreferrer">Report Bug</a>
         <a href="https://discord.gg/ravenquest" target="_blank" rel="noopener noreferrer">Discord</a>
       </nav>
     </div>
@@ -321,7 +371,7 @@
       "url": "https://github.com/therealpixelated"
     },
     "url": "https://therealpixelated.github.io/ravenhud",
-    "downloadUrl": "https://github.com/therealpixelated/ravenhud/releases"
+    "downloadUrl": "https://github.com/Pix-Elated/ravenhud/releases"
   }
   </script>
   <script src="js/main.js" defer></script>
