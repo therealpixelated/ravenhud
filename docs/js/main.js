@@ -5,7 +5,6 @@
 
 const GITHUB_REPO = 'Pix-Elated/ravenhud';
 const GITHUB_API = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
-const SCORECARD_JSON = './data/scorecard.json';
 
 /**
  * Throttle function to limit execution rate
@@ -341,34 +340,6 @@ function initFeatureLightbox() {
   });
 }
 
-/**
- * Fetch and display security scorecard
- */
-async function fetchScorecard() {
-  const scorecardBadge = document.getElementById('scorecard-badge');
-  if (!scorecardBadge) return;
-
-  try {
-    const response = await fetch(SCORECARD_JSON);
-    if (!response.ok) throw new Error('Scorecard not found');
-
-    const data = await response.json();
-    const score = data.score?.toFixed(1) || 'N/A';
-
-    // Determine badge color based on score
-    let color = '9e9e9e'; // gray default
-    if (data.score >= 7) color = '4caf50'; // green
-    else if (data.score >= 5) color = 'ff9800'; // orange
-    else if (data.score >= 0) color = 'f44336'; // red
-
-    // Update badge with score
-    scorecardBadge.src = `https://img.shields.io/badge/Scorecard-${score}%2F10-${color}?logo=opensourceinitiative`;
-    scorecardBadge.alt = `Security Scorecard: ${score}/10`;
-  } catch (error) {
-    // Fallback: hide or show placeholder
-    console.log('Scorecard data not available yet');
-  }
-}
 
 /**
  * Initialize the page
@@ -385,8 +356,6 @@ async function init() {
   const release = await fetchLatestRelease();
   updateUI(release);
 
-  // Fetch and display scorecard
-  fetchScorecard();
 }
 
 // Run when DOM is ready
