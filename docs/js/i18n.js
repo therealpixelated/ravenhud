@@ -554,6 +554,75 @@ const translations = {
     'lightbox.click-details': 'Klik voor details',
     'lightbox.previous': '← Vorige',
     'lightbox.next': 'Volgende →'
+  },
+
+  tr: {
+    // Navigation
+    'nav.features': 'Özellikler',
+    'nav.download': 'İndir',
+    'nav.security': 'Güvenlik',
+    'nav.github': 'GitHub',
+
+    // Hero
+    'hero.tagline': 'Her Şeyi Takip Et. Daha Akıllı Oyna.',
+    'hero.description': 'Kozmetikler, kupalar, ticaret paketleri, çiftçilik ve daha fazlasını takip etmek için her zaman üstte kalan bir overlay aracı.',
+    'hero.download': 'Windows için İndir',
+    'hero.demo': 'Demo Dene',
+    'hero.see-features': 'Özellikleri Gör',
+
+    // Features
+    'features.title': 'Özellikler',
+    'features.cosmetics.title': 'Kozmetik Takipçisi',
+    'features.cosmetics.desc': 'Tüm kozmetik kategorilerinde koleksiyon ilerlemenizi takip edin. Sahip olduklarınızı, eksikleri ve tamamlanma yüzdenizi görün.',
+    'features.trophies.title': 'Kupa Takipçisi',
+    'features.trophies.desc': 'Kupa başarılarınızı izleyin. Kategoriye göre filtreleyin, belirli kupaları arayın ve av ilerlemenizi takip edin.',
+    'features.tradepacks.title': 'Ticaret Paketi Hesaplayıcı',
+    'features.tradepacks.desc': 'Ticaret rotalarınızı optimize edin. Karları hesaplayın, hedefleri karşılaştırın ve paketleriniz için en iyi fırsatları bulun.',
+    'features.farming.title': 'Çiftçilik Kartları',
+    'features.farming.desc': 'Ekinler ve hayvanlar için interaktif rehberler. Büyüme sürelerini, verimleri ve optimal stratejileri bir bakışta görün.',
+    'features.land.title': 'Arazi Simülatörü',
+    'features.land.desc': 'Taahhüt etmeden önce mülk düzenlerinizi planlayın. Farklı yapılandırmaları test edin ve arazi kullanımınızı optimize edin.',
+    'features.overlay.title': 'Overlay Modu',
+    'features.overlay.desc': 'Oynarken çalışan her zaman üstte şeffaf pencere. Oynanışı asla engellemeyen tıklama geçişi desteği.',
+
+    // Download
+    'download.title': 'İndir',
+    'download.recommended': 'Önerilen',
+    'download.windows': 'Windows Yükleyici',
+    'download.portable': 'Taşınabilir ZIP',
+    'download.installer-btn': 'Yükleyiciyi İndir',
+    'download.zip-btn': 'ZIP İndir',
+    'download.auto-updates': 'Otomatik güncellemeler dahil',
+    'download.no-install': 'Kurulum gerektirmez',
+    'download.note': 'Windows 10 veya üstü gerektirir. Yükleyici sürümü güncellemeleri otomatik olarak indirir ve kurar.',
+
+    // Requirements
+    'requirements.title': 'Sistem Gereksinimleri',
+    'requirements.os': 'İS:',
+    'requirements.ram': 'RAM:',
+    'requirements.storage': 'Depolama:',
+    'requirements.display': 'Ekran:',
+
+    // Security
+    'security.title': 'Güvenlik ve Şeffaflık',
+    'security.intro': 'Her sürüm güvenliğiniz için otomatik olarak doğrulanır.',
+    'security.verify.title': 'İndirmenizi Nasıl Doğrularsınız',
+    'security.verify.step1': 'İmza kontrol:',
+    'security.verify.step1.detail': '.exe\'ye sağ tıklayın → Özellikler → Dijital İmzalar → "therealcloudvikinggmail.onmicrosoft.com" göstermelidir',
+    'security.verify.step2': 'VirusTotal:',
+    'security.verify.step2.detail': 'Her sürüm, sürüm notlarında tarama sonuçlarına bir bağlantı içerir',
+    'security.verify.step3': 'Hash kontrol:',
+    'security.verify.step3.detail': 'Sürüm notlarında gösterilen SHA256 hash\'ini karşılaştırın',
+
+    // Footer
+    'footer.made-by': 'RavenHUD, tarafından yapılan bir topluluk projesidir',
+    'footer.disclaimer': 'Tavernlight Games ile bağlantılı değildir. Oyun varlıkları Tavernlight Games\'e aittir.',
+    'footer.report-bug': 'Hata Bildir',
+
+    // Lightbox
+    'lightbox.click-details': 'Detaylar için tıklayın',
+    'lightbox.previous': '← Önceki',
+    'lightbox.next': 'Sonraki →'
   }
 };
 
@@ -565,6 +634,7 @@ const languageConfig = {
   fr: { code: 'fr', name: 'Français', flag: 'https://flagcdn.com/w20/fr.png' },
   de: { code: 'de', name: 'Deutsch', flag: 'https://flagcdn.com/w20/de.png' },
   nl: { code: 'nl', name: 'Nederlands', flag: 'https://flagcdn.com/w20/nl.png' },
+  tr: { code: 'tr', name: 'Türkçe', flag: 'https://flagcdn.com/w20/tr.png' },
   id: { code: 'id', name: 'Indonesia', flag: 'https://flagcdn.com/w20/id.png' },
   vi: { code: 'vi', name: 'Tiếng Việt', flag: 'https://flagcdn.com/w20/vn.png' }
 };
