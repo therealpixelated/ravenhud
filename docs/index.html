@@ -38,10 +38,45 @@
         <img src="assets/logo.png" alt="" width="52" height="52" aria-hidden="true">
       </a>
       <div class="nav-links" id="nav-links">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#download" class="nav-link">Download</a>
-        <a href="#security" class="nav-link">Security</a>
-        <a href="https://github.com/Pix-Elated/ravenhud" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features">Features</a>
+        <a href="#download" class="nav-link" data-i18n="nav.download">Download</a>
+        <a href="#security" class="nav-link" data-i18n="nav.security">Security</a>
+        <a href="https://github.com/Pix-Elated/ravenhud" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+      </div>
+      <div class="language-switcher">
+        <button type="button" class="language-btn" aria-label="Change language" aria-expanded="false" aria-haspopup="listbox">
+          <span class="language-flag">🇺🇸</span>
+          <span class="language-btn-text">EN</span>
+          <svg class="language-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="language-dropdown" role="listbox" aria-label="Select language">
+          <button type="button" class="language-option active" data-lang="en" role="option" aria-selected="true">
+            <span class="language-flag">🇺🇸</span>
+            <span>English</span>
+          </button>
+          <button type="button" class="language-option" data-lang="pt" role="option" aria-selected="false">
+            <span class="language-flag">🇧🇷</span>
+            <span>Português</span>
+          </button>
+          <button type="button" class="language-option" data-lang="es" role="option" aria-selected="false">
+            <span class="language-flag">🇲🇽</span>
+            <span>Español</span>
+          </button>
+          <button type="button" class="language-option" data-lang="fr" role="option" aria-selected="false">
+            <span class="language-flag">🇫🇷</span>
+            <span>Français</span>
+          </button>
+          <button type="button" class="language-option" data-lang="id" role="option" aria-selected="false">
+            <span class="language-flag">🇮🇩</span>
+            <span>Indonesia</span>
+          </button>
+          <button type="button" class="language-option" data-lang="vi" role="option" aria-selected="false">
+            <span class="language-flag">🇻🇳</span>
+            <span>Tiếng Việt</span>
+          </button>
+        </div>
       </div>
       <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links" aria-haspopup="true">Menu</button>
     </nav>
@@ -55,20 +90,20 @@
           <span class="visually-hidden">RavenHUD - RavenQuest Companion Overlay Tool</span>
           <img src="assets/og-image.png" alt="" class="hero-logo" width="400" height="200" aria-hidden="true">
         </h1>
-        <p class="tagline">Track Everything. Play Smarter.</p>
-        <p class="description">
+        <p class="tagline" data-i18n="hero.tagline">Track Everything. Play Smarter.</p>
+        <p class="description" data-i18n="hero.description">
           An always-on-top overlay tool to track cosmetics, trophies, tradepacks, farming, and more.
         </p>
         <div class="cta-buttons">
           <a href="#download" class="btn btn-primary btn-large">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Download for Windows
+            <span data-i18n="hero.download">Download for Windows</span>
           </a>
           <a href="demo/" class="btn btn-secondary btn-large">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            Try Demo
+            <span data-i18n="hero.demo">Try Demo</span>
           </a>
-          <a href="#features" class="btn btn-secondary btn-large">See Features</a>
+          <a href="#features" class="btn btn-secondary btn-large" data-i18n="hero.see-features">See Features</a>
         </div>
         <p class="version" id="version-info">Loading version...</p>
       </div>
@@ -82,7 +117,7 @@
 
     <!-- Features Section -->
     <section id="features" class="features" aria-labelledby="features-heading">
-      <h2 id="features-heading">Features</h2>
+      <h2 id="features-heading" data-i18n="features.title">Features</h2>
       <div class="features-grid">
         
         <article class="feature-card"
@@ -93,8 +128,8 @@
           data-description="Track your collection progress across all cosmetic categories. See what you own, what's missing, and your completion percentage."
           data-details="Filter by mount, pet, outfit, weapon skin, and more. Mark items as owned with a single click. Progress syncs across sessions.">
           <div class="feature-icon" aria-hidden="true">🎨</div>
-          <h3>Cosmetics Tracker</h3>
-          <p>Track your collection progress across all cosmetic categories. See what you own, what's missing, and your completion percentage.</p>
+          <h3 data-i18n="features.cosmetics.title">Cosmetics Tracker</h3>
+          <p data-i18n="features.cosmetics.desc">Track your collection progress across all cosmetic categories. See what you own, what's missing, and your completion percentage.</p>
           <div class="feature-preview">
             <button type="button" class="preview-link" aria-label="View Cosmetics Tracker details">
               <img src="assets/gifs/cosmetics.gif" alt="Cosmetics Tracker Demo" loading="lazy" width="400" height="300">
@@ -110,8 +145,8 @@
           data-description="Monitor your trophy achievements. Filter by category, search for specific trophies, and track your hunting progress."
           data-details="Browse all in-game trophies with detailed unlock requirements. Filter by combat, exploration, crafting, and more. Search by name or description.">
           <div class="feature-icon" aria-hidden="true">🏆</div>
-          <h3>Trophy Tracker</h3>
-          <p>Monitor your trophy achievements. Filter by category, search for specific trophies, and track your hunting progress.</p>
+          <h3 data-i18n="features.trophies.title">Trophy Tracker</h3>
+          <p data-i18n="features.trophies.desc">Monitor your trophy achievements. Filter by category, search for specific trophies, and track your hunting progress.</p>
           <div class="feature-preview">
             <button type="button" class="preview-link" aria-label="View Trophy Tracker details">
               <img src="assets/gifs/trophies.gif" alt="Trophy Tracker Demo" loading="lazy" width="400" height="300">
@@ -127,8 +162,8 @@
           data-description="Optimize your trade routes. Calculate profits, compare destinations, and find the best deals for your tradepacks."
           data-details="See material costs, crafting requirements, and profit margins at a glance. Compare prices across all destinations. Factor in your owned lands for accurate calculations.">
           <div class="feature-icon" aria-hidden="true">📦</div>
-          <h3>Tradepack Calculator</h3>
-          <p>Optimize your trade routes. Calculate profits, compare destinations, and find the best deals for your tradepacks.</p>
+          <h3 data-i18n="features.tradepacks.title">Tradepack Calculator</h3>
+          <p data-i18n="features.tradepacks.desc">Optimize your trade routes. Calculate profits, compare destinations, and find the best deals for your tradepacks.</p>
           <div class="feature-preview">
             <button type="button" class="preview-link" aria-label="View Tradepack Calculator details">
               <img src="assets/gifs/tradepacks.gif" alt="Tradepack Calculator Demo" loading="lazy" width="400" height="300">
@@ -144,8 +179,8 @@
           data-description="Interactive guides for crops and animals. See growth times, yields, and optimal farming strategies at a glance."
           data-details="View detailed stats for all farmable items including growth time, yield per harvest, XP gained, and silver value. Plan your farm layout with tile calculations.">
           <div class="feature-icon" aria-hidden="true">🌾</div>
-          <h3>Farming Cards</h3>
-          <p>Interactive guides for crops and animals. See growth times, yields, and optimal farming strategies at a glance.</p>
+          <h3 data-i18n="features.farming.title">Farming Cards</h3>
+          <p data-i18n="features.farming.desc">Interactive guides for crops and animals. See growth times, yields, and optimal farming strategies at a glance.</p>
           <div class="feature-preview">
             <button type="button" class="preview-link" aria-label="View Farming Cards details">
               <img src="assets/gifs/farming.gif" alt="Farming Cards Demo" loading="lazy" width="400" height="300">
@@ -161,8 +196,8 @@
           data-description="Plan your estate layouts before committing. Test different configurations and optimize your land usage."
           data-details="Drag and drop buildings onto your land. See tile usage, tax costs, and efficiency ratings. Supports all community and NFT land sizes. Try it in the demo!">
           <div class="feature-icon" aria-hidden="true">🗺️</div>
-          <h3>Land Simulator</h3>
-          <p>Plan your estate layouts before committing. Test different configurations and optimize your land usage.</p>
+          <h3 data-i18n="features.land.title">Land Simulator</h3>
+          <p data-i18n="features.land.desc">Plan your estate layouts before committing. Test different configurations and optimize your land usage.</p>
           <div class="feature-preview">
             <button type="button" class="preview-link" aria-label="View Land Simulator details">
               <img src="assets/gifs/land-simulator.gif" alt="Land Simulator Demo" loading="lazy" width="400" height="300">
@@ -178,8 +213,8 @@
           data-description="Always-on-top transparent window that works while you play. Click-through support so it never interferes with gameplay."
           data-details="Toggle overlay mode with a hotkey. Adjust transparency from fully opaque to nearly invisible. Click-through mode lets you interact with the game underneath.">
           <div class="feature-icon" aria-hidden="true">⚡</div>
-          <h3>Overlay Mode</h3>
-          <p>Always-on-top transparent window that works while you play. Click-through support so it never interferes with gameplay.</p>
+          <h3 data-i18n="features.overlay.title">Overlay Mode</h3>
+          <p data-i18n="features.overlay.desc">Always-on-top transparent window that works while you play. Click-through support so it never interferes with gameplay.</p>
           <div class="feature-preview">
             <button type="button" class="preview-link" aria-label="View Overlay Mode details">
               <img src="assets/gifs/overlay.gif" alt="Overlay Mode Demo" loading="lazy" width="400" height="300">
@@ -192,15 +227,15 @@
 
     <!-- Download Section -->
     <section id="download" class="download" aria-labelledby="download-heading">
-      <h2 id="download-heading">Download</h2>
+      <h2 id="download-heading" data-i18n="download.title">Download</h2>
       <div class="download-options">
         <!-- Installer Option (Recommended) -->
         <div class="download-card download-card-primary">
-          <div class="download-badge">Recommended</div>
+          <div class="download-badge" data-i18n="download.recommended">Recommended</div>
           <div class="download-info">
             <div class="platform">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-              <span>Windows Installer</span>
+              <span data-i18n="download.windows">Windows Installer</span>
             </div>
             <div class="download-details">
               <p class="filename" id="installer-filename">RavenHUD-Setup.exe</p>
@@ -209,9 +244,9 @@
           </div>
           <a href="https://github.com/Pix-Elated/ravenhud/releases" class="btn btn-primary btn-large" id="installer-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Download Installer
+            <span data-i18n="download.installer-btn">Download Installer</span>
           </a>
-          <p class="download-feature">Includes automatic updates</p>
+          <p class="download-feature" data-i18n="download.auto-updates">Includes automatic updates</p>
         </div>
 
         <!-- Portable Option -->
@@ -219,7 +254,7 @@
           <div class="download-info">
             <div class="platform">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              <span>Portable ZIP</span>
+              <span data-i18n="download.portable">Portable ZIP</span>
             </div>
             <div class="download-details">
               <p class="filename" id="portable-filename">RavenHUD-portable.zip</p>
@@ -228,40 +263,40 @@
           </div>
           <a href="https://github.com/Pix-Elated/ravenhud/releases" class="btn btn-secondary btn-large" id="portable-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Download ZIP
+            <span data-i18n="download.zip-btn">Download ZIP</span>
           </a>
-          <p class="download-feature">No installation required</p>
+          <p class="download-feature" data-i18n="download.no-install">No installation required</p>
         </div>
       </div>
       <p class="version download-version" id="version-info-download">Loading version...</p>
-      <p class="download-note">
+      <p class="download-note" data-i18n="download.note">
         Requires Windows 10 or later. The installer version will automatically download and install updates.
       </p>
     </section>
 
     <!-- Requirements Section -->
     <section id="requirements" class="requirements" aria-labelledby="requirements-heading">
-      <h2 id="requirements-heading">System Requirements</h2>
+      <h2 id="requirements-heading" data-i18n="requirements.title">System Requirements</h2>
       <div class="requirements-grid">
         <div class="requirement">
-          <strong>OS:</strong> Windows 10 / 11
+          <strong data-i18n="requirements.os">OS:</strong> Windows 10 / 11
         </div>
         <div class="requirement">
-          <strong>RAM:</strong> 4 GB minimum
+          <strong data-i18n="requirements.ram">RAM:</strong> 4 GB minimum
         </div>
         <div class="requirement">
-          <strong>Storage:</strong> ~150 MB
+          <strong data-i18n="requirements.storage">Storage:</strong> ~150 MB
         </div>
         <div class="requirement">
-          <strong>Display:</strong> 1280x720 or higher
+          <strong data-i18n="requirements.display">Display:</strong> 1280x720 or higher
         </div>
       </div>
     </section>
 
     <!-- Security Section -->
     <section id="security" class="security" aria-labelledby="security-heading">
-      <h2 id="security-heading">Security & Transparency</h2>
-      <p class="security-intro">Every release is automatically verified for your safety.</p>
+      <h2 id="security-heading" data-i18n="security.title">Security & Transparency</h2>
+      <p class="security-intro" data-i18n="security.intro">Every release is automatically verified for your safety.</p>
 
       <div class="security-badges">
         <img src="https://img.shields.io/badge/Code%20Signed-Azure%20Trusted%20Signing-0078D4?logo=microsoft" alt="Code Signed">
@@ -272,11 +307,11 @@
 
 
       <div class="verify-steps">
-        <h3>How to Verify Your Download</h3>
+        <h3 data-i18n="security.verify.title">How to Verify Your Download</h3>
         <ol>
-          <li><strong>Check signature:</strong> Right-click .exe &rarr; Properties &rarr; Digital Signatures &rarr; Should show "therealcloudvikinggmail.onmicrosoft.com"</li>
-          <li><strong>VirusTotal:</strong> Each release includes a link to the scan results in the release notes</li>
-          <li><strong>Hash check:</strong> Compare the SHA256 hash shown in release notes</li>
+          <li><strong data-i18n="security.verify.step1">Check signature:</strong> <span data-i18n="security.verify.step1.detail">Right-click .exe &rarr; Properties &rarr; Digital Signatures &rarr; Should show "therealcloudvikinggmail.onmicrosoft.com"</span></li>
+          <li><strong data-i18n="security.verify.step2">VirusTotal:</strong> <span data-i18n="security.verify.step2.detail">Each release includes a link to the scan results in the release notes</span></li>
+          <li><strong data-i18n="security.verify.step3">Hash check:</strong> <span data-i18n="security.verify.step3.detail">Compare the SHA256 hash shown in release notes</span></li>
         </ol>
       </div>
     </section>
@@ -285,15 +320,15 @@
   <footer class="site-footer">
     <div class="footer-content">
       <p>
-        RavenHUD is a community project made by
+        <span data-i18n="footer.made-by">RavenHUD is a community project made by</span>
         <a href="https://github.com/therealpixelated" target="_blank" rel="noopener noreferrer">therealpixelated</a>
       </p>
-      <p class="disclaimer">
+      <p class="disclaimer" data-i18n="footer.disclaimer">
         Not affiliated with Tavernlight Games. Game assets belong to Tavernlight Games.
       </p>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://github.com/Pix-Elated/ravenhud" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/Pix-Elated/ravenhud/issues" target="_blank" rel="noopener noreferrer">Report Bug</a>
+        <a href="https://github.com/Pix-Elated/ravenhud" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+        <a href="https://github.com/Pix-Elated/ravenhud/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer.report-bug">Report Bug</a>
         <a href="https://discord.gg/ravenquest" target="_blank" rel="noopener noreferrer">Discord</a>
       </nav>
     </div>
@@ -318,9 +353,9 @@
         </div>
       </div>
       <div class="lightbox-nav" hidden>
-        <button type="button" class="lightbox-prev" aria-label="Previous feature">&larr; Previous</button>
+        <button type="button" class="lightbox-prev" aria-label="Previous feature" data-i18n="lightbox.previous">&larr; Previous</button>
         <span class="lightbox-counter"></span>
-        <button type="button" class="lightbox-next" aria-label="Next feature">Next &rarr;</button>
+        <button type="button" class="lightbox-next" aria-label="Next feature" data-i18n="lightbox.next">Next &rarr;</button>
       </div>
     </div>
   </div>
@@ -348,6 +383,7 @@
     "downloadUrl": "https://github.com/Pix-Elated/ravenhud/releases"
   }
   </script>
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
   <noscript>
     <p style="text-align: center; padding: 20px; color: #e8dcc8;">
