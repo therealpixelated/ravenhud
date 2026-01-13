@@ -1,6 +1,6 @@
 /**
  * RavenHUD Website - Internationalization (i18n)
- * Supports: English, Portuguese, Spanish, French, Indonesian, Vietnamese
+ * Supports: English, Portuguese, Spanish, French, German, Dutch, Indonesian, Vietnamese
  */
 
 const translations = {
@@ -415,18 +415,158 @@ const translations = {
     // Lightbox
     'lightbox.click-details': 'Nh\u1ea5p \u0111\u1ec3 xem chi ti\u1ebft',
     'lightbox.previous': '\u2190 Tr\u01b0\u1edbc',
-    'lightbox.next': 'Ti\u1ebfp \u2192'
+    'lightbox.next': 'Tiếp →'
+  },
+
+  de: {
+    // Navigation
+    'nav.features': 'Funktionen',
+    'nav.download': 'Herunterladen',
+    'nav.security': 'Sicherheit',
+    'nav.github': 'GitHub',
+
+    // Hero
+    'hero.tagline': 'Verfolge Alles. Spiele Klüger.',
+    'hero.description': 'Ein immer sichtbares Overlay-Tool zum Verfolgen von Kosmetik, Trophäen, Handelspaketen, Landwirtschaft und mehr.',
+    'hero.download': 'Für Windows herunterladen',
+    'hero.demo': 'Demo testen',
+    'hero.see-features': 'Funktionen ansehen',
+
+    // Features
+    'features.title': 'Funktionen',
+    'features.cosmetics.title': 'Kosmetik-Tracker',
+    'features.cosmetics.desc': 'Verfolge deinen Sammlungsfortschritt in allen Kosmetik-Kategorien. Sieh was du besitzt, was fehlt und deinen Fertigstellungsgrad.',
+    'features.trophies.title': 'Trophäen-Tracker',
+    'features.trophies.desc': 'Überwache deine Trophäen-Erfolge. Filtere nach Kategorie, suche nach bestimmten Trophäen und verfolge deinen Jagdfortschritt.',
+    'features.tradepacks.title': 'Handelspaket-Rechner',
+    'features.tradepacks.desc': 'Optimiere deine Handelsrouten. Berechne Gewinne, vergleiche Ziele und finde die besten Angebote für deine Pakete.',
+    'features.farming.title': 'Landwirtschafts-Karten',
+    'features.farming.desc': 'Interaktive Anleitungen für Pflanzen und Tiere. Sieh Wachstumszeiten, Erträge und optimale Strategien auf einen Blick.',
+    'features.land.title': 'Land-Simulator',
+    'features.land.desc': 'Plane deine Grundstücks-Layouts vor dem Bau. Teste verschiedene Konfigurationen und optimiere deine Landnutzung.',
+    'features.overlay.title': 'Overlay-Modus',
+    'features.overlay.desc': 'Immer sichtbares transparentes Fenster während du spielst. Click-Through-Unterstützung, damit es nie das Gameplay stört.',
+
+    // Download
+    'download.title': 'Herunterladen',
+    'download.recommended': 'Empfohlen',
+    'download.windows': 'Windows Installer',
+    'download.portable': 'Portable ZIP',
+    'download.installer-btn': 'Installer herunterladen',
+    'download.zip-btn': 'ZIP herunterladen',
+    'download.auto-updates': 'Enthält automatische Updates',
+    'download.no-install': 'Keine Installation erforderlich',
+    'download.note': 'Erfordert Windows 10 oder höher. Die Installer-Version lädt Updates automatisch herunter und installiert sie.',
+
+    // Requirements
+    'requirements.title': 'Systemanforderungen',
+    'requirements.os': 'OS:',
+    'requirements.ram': 'RAM:',
+    'requirements.storage': 'Speicher:',
+    'requirements.display': 'Bildschirm:',
+
+    // Security
+    'security.title': 'Sicherheit & Transparenz',
+    'security.intro': 'Jede Version wird automatisch für deine Sicherheit überprüft.',
+    'security.verify.title': 'So verifizierst du deinen Download',
+    'security.verify.step1': 'Signatur prüfen:',
+    'security.verify.step1.detail': 'Rechtsklick auf .exe → Eigenschaften → Digitale Signaturen → Sollte "therealcloudvikinggmail.onmicrosoft.com" anzeigen',
+    'security.verify.step2': 'VirusTotal:',
+    'security.verify.step2.detail': 'Jede Version enthält einen Link zu den Scan-Ergebnissen in den Release-Notizen',
+    'security.verify.step3': 'Hash prüfen:',
+    'security.verify.step3.detail': 'Vergleiche den SHA256-Hash aus den Release-Notizen',
+
+    // Footer
+    'footer.made-by': 'RavenHUD ist ein Community-Projekt erstellt von',
+    'footer.disclaimer': 'Nicht mit Tavernlight Games verbunden. Spiel-Assets gehören Tavernlight Games.',
+    'footer.report-bug': 'Bug melden',
+
+    // Lightbox
+    'lightbox.click-details': 'Klicken für Details',
+    'lightbox.previous': '← Zurück',
+    'lightbox.next': 'Weiter →'
+  },
+
+  nl: {
+    // Navigation
+    'nav.features': 'Functies',
+    'nav.download': 'Downloaden',
+    'nav.security': 'Beveiliging',
+    'nav.github': 'GitHub',
+
+    // Hero
+    'hero.tagline': 'Volg Alles. Speel Slimmer.',
+    'hero.description': 'Een altijd zichtbare overlay-tool om cosmetica, trofeeën, handelspakketten, landbouw en meer te volgen.',
+    'hero.download': 'Downloaden voor Windows',
+    'hero.demo': 'Demo proberen',
+    'hero.see-features': 'Functies bekijken',
+
+    // Features
+    'features.title': 'Functies',
+    'features.cosmetics.title': 'Cosmetica Tracker',
+    'features.cosmetics.desc': 'Volg je verzamelvoortgang in alle cosmetica-categorieën. Zie wat je bezit, wat ontbreekt en je voltooiingspercentage.',
+    'features.trophies.title': 'Trofee Tracker',
+    'features.trophies.desc': 'Monitor je trofee-prestaties. Filter op categorie, zoek naar specifieke trofeeën en volg je jachtvoortgang.',
+    'features.tradepacks.title': 'Handelspakket Calculator',
+    'features.tradepacks.desc': 'Optimaliseer je handelsroutes. Bereken winsten, vergelijk bestemmingen en vind de beste deals voor je pakketten.',
+    'features.farming.title': 'Landbouw Kaarten',
+    'features.farming.desc': 'Interactieve gidsen voor gewassen en dieren. Zie groeitijden, opbrengsten en optimale strategieën in één oogopslag.',
+    'features.land.title': 'Land Simulator',
+    'features.land.desc': 'Plan je landgoed-indelingen voordat je bouwt. Test verschillende configuraties en optimaliseer je landgebruik.',
+    'features.overlay.title': 'Overlay Modus',
+    'features.overlay.desc': 'Altijd zichtbaar transparant venster terwijl je speelt. Click-through ondersteuning zodat het nooit de gameplay verstoort.',
+
+    // Download
+    'download.title': 'Downloaden',
+    'download.recommended': 'Aanbevolen',
+    'download.windows': 'Windows Installer',
+    'download.portable': 'Draagbare ZIP',
+    'download.installer-btn': 'Installer downloaden',
+    'download.zip-btn': 'ZIP downloaden',
+    'download.auto-updates': 'Inclusief automatische updates',
+    'download.no-install': 'Geen installatie vereist',
+    'download.note': 'Vereist Windows 10 of later. De installer-versie downloadt en installeert updates automatisch.',
+
+    // Requirements
+    'requirements.title': 'Systeemvereisten',
+    'requirements.os': 'OS:',
+    'requirements.ram': 'RAM:',
+    'requirements.storage': 'Opslag:',
+    'requirements.display': 'Scherm:',
+
+    // Security
+    'security.title': 'Beveiliging & Transparantie',
+    'security.intro': 'Elke release wordt automatisch geverifieerd voor je veiligheid.',
+    'security.verify.title': 'Hoe je download te verifiëren',
+    'security.verify.step1': 'Handtekening controleren:',
+    'security.verify.step1.detail': 'Rechtermuisknop op .exe → Eigenschappen → Digitale Handtekeningen → Moet "therealcloudvikinggmail.onmicrosoft.com" tonen',
+    'security.verify.step2': 'VirusTotal:',
+    'security.verify.step2.detail': 'Elke release bevat een link naar de scanresultaten in de release-opmerkingen',
+    'security.verify.step3': 'Hash controleren:',
+    'security.verify.step3.detail': 'Vergelijk de SHA256-hash uit de release-opmerkingen',
+
+    // Footer
+    'footer.made-by': 'RavenHUD is een communityproject gemaakt door',
+    'footer.disclaimer': 'Niet geaffilieerd met Tavernlight Games. Game-assets behoren toe aan Tavernlight Games.',
+    'footer.report-bug': 'Bug melden',
+
+    // Lightbox
+    'lightbox.click-details': 'Klik voor details',
+    'lightbox.previous': '← Vorige',
+    'lightbox.next': 'Volgende →'
   }
 };
 
 // Language configuration with flags
 const languageConfig = {
-  en: { code: 'en', name: 'English', flag: '\ud83c\uddfa\ud83c\uddf8' },
-  pt: { code: 'pt', name: 'Portugu\u00eas', flag: '\ud83c\udde7\ud83c\uddf7' },
-  es: { code: 'es', name: 'Espa\u00f1ol', flag: '\ud83c\uddf2\ud83c\uddfd' },
-  fr: { code: 'fr', name: 'Fran\u00e7ais', flag: '\ud83c\uddeb\ud83c\uddf7' },
-  id: { code: 'id', name: 'Indonesia', flag: '\ud83c\uddee\ud83c\udde9' },
-  vi: { code: 'vi', name: 'Ti\u1ebfng Vi\u1ec7t', flag: '\ud83c\uddfb\ud83c\uddf3' }
+  en: { code: 'en', name: 'English', flag: '🇺🇸' },
+  pt: { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  es: { code: 'es', name: 'Español', flag: '🇲🇽' },
+  fr: { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  de: { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  nl: { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
+  id: { code: 'id', name: 'Indonesia', flag: '🇮🇩' },
+  vi: { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' }
 };
 
 const STORAGE_KEY = 'ravenhud-language';
