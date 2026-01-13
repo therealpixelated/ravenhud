@@ -557,16 +557,16 @@ const translations = {
   }
 };
 
-// Language configuration with flags
+// Language configuration with flag images (using flagcdn.com)
 const languageConfig = {
-  en: { code: 'en', name: 'English', flag: '🇺🇸' },
-  pt: { code: 'pt', name: 'Português', flag: '🇧🇷' },
-  es: { code: 'es', name: 'Español', flag: '🇲🇽' },
-  fr: { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  de: { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  nl: { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
-  id: { code: 'id', name: 'Indonesia', flag: '🇮🇩' },
-  vi: { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' }
+  en: { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/us.png' },
+  pt: { code: 'pt', name: 'Português', flag: 'https://flagcdn.com/w20/br.png' },
+  es: { code: 'es', name: 'Español', flag: 'https://flagcdn.com/w20/mx.png' },
+  fr: { code: 'fr', name: 'Français', flag: 'https://flagcdn.com/w20/fr.png' },
+  de: { code: 'de', name: 'Deutsch', flag: 'https://flagcdn.com/w20/de.png' },
+  nl: { code: 'nl', name: 'Nederlands', flag: 'https://flagcdn.com/w20/nl.png' },
+  id: { code: 'id', name: 'Indonesia', flag: 'https://flagcdn.com/w20/id.png' },
+  vi: { code: 'vi', name: 'Tiếng Việt', flag: 'https://flagcdn.com/w20/vn.png' }
 };
 
 const STORAGE_KEY = 'ravenhud-language';
@@ -636,11 +636,11 @@ function updatePageTranslations() {
 
   // Update language switcher display
   const config = languageConfig[currentLanguage];
-  const flagEl = document.querySelector('.language-switcher .language-flag');
+  const flagEl = document.querySelector('.language-switcher .language-btn .language-flag');
   const textEl = document.querySelector('.language-btn-text');
 
   if (flagEl && config) {
-    flagEl.textContent = config.flag;
+    flagEl.src = config.flag;
   }
   if (textEl && config) {
     textEl.textContent = config.code.toUpperCase();
