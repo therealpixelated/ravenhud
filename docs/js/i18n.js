@@ -623,6 +623,144 @@ const translations = {
     'lightbox.click-details': 'Detaylar için tıklayın',
     'lightbox.previous': '← Önceki',
     'lightbox.next': 'Sonraki →'
+  },
+
+  ru: {
+    // Navigation
+    'nav.features': 'Функции',
+    'nav.download': 'Скачать',
+    'nav.security': 'Безопасность',
+    'nav.github': 'GitHub',
+
+    // Hero
+    'hero.tagline': 'Отслеживай всё. Играй умнее.',
+    'hero.description': 'Всегда поверх окон оверлей для отслеживания косметики, трофеев, торговых пакетов, фермерства и многого другого.',
+    'hero.download': 'Скачать для Windows',
+    'hero.demo': 'Попробовать демо',
+    'hero.see-features': 'Смотреть функции',
+
+    // Features
+    'features.title': 'Функции',
+    'features.cosmetics.title': 'Трекер косметики',
+    'features.cosmetics.desc': 'Отслеживайте прогресс коллекции во всех категориях косметики. Смотрите что у вас есть, чего не хватает и процент завершения.',
+    'features.trophies.title': 'Трекер трофеев',
+    'features.trophies.desc': 'Следите за достижениями трофеев. Фильтруйте по категории, ищите конкретные трофеи и отслеживайте прогресс охоты.',
+    'features.tradepacks.title': 'Калькулятор торговых пакетов',
+    'features.tradepacks.desc': 'Оптимизируйте торговые маршруты. Рассчитывайте прибыль, сравнивайте направления и находите лучшие сделки.',
+    'features.farming.title': 'Карточки фермерства',
+    'features.farming.desc': 'Интерактивные руководства по культурам и животным. Смотрите время роста, урожайность и оптимальные стратегии.',
+    'features.land.title': 'Симулятор земли',
+    'features.land.desc': 'Планируйте расположение построек до строительства. Тестируйте разные конфигурации и оптимизируйте использование земли.',
+    'features.overlay.title': 'Режим оверлея',
+    'features.overlay.desc': 'Прозрачное окно поверх всех окон, работающее во время игры. Поддержка сквозных кликов, чтобы не мешать игре.',
+
+    // Download
+    'download.title': 'Скачать',
+    'download.recommended': 'Рекомендуется',
+    'download.windows': 'Установщик Windows',
+    'download.portable': 'Портативный ZIP',
+    'download.installer-btn': 'Скачать установщик',
+    'download.zip-btn': 'Скачать ZIP',
+    'download.auto-updates': 'Включает автообновления',
+    'download.no-install': 'Установка не требуется',
+    'download.note': 'Требуется Windows 10 или новее. Версия с установщиком автоматически загружает и устанавливает обновления.',
+
+    // Requirements
+    'requirements.title': 'Системные требования',
+    'requirements.os': 'ОС:',
+    'requirements.ram': 'ОЗУ:',
+    'requirements.storage': 'Память:',
+    'requirements.display': 'Дисплей:',
+
+    // Security
+    'security.title': 'Безопасность и прозрачность',
+    'security.intro': 'Каждый релиз автоматически проверяется для вашей безопасности.',
+    'security.verify.title': 'Как проверить загрузку',
+    'security.verify.step1': 'Проверка подписи:',
+    'security.verify.step1.detail': 'ПКМ на .exe → Свойства → Цифровые подписи → Должно показать "therealcloudvikinggmail.onmicrosoft.com"',
+    'security.verify.step2': 'VirusTotal:',
+    'security.verify.step2.detail': 'Каждый релиз содержит ссылку на результаты сканирования в примечаниях к релизу',
+    'security.verify.step3': 'Проверка хеша:',
+    'security.verify.step3.detail': 'Сравните SHA256 хеш из примечаний к релизу',
+
+    // Footer
+    'footer.made-by': 'RavenHUD — это общественный проект, созданный',
+    'footer.disclaimer': 'Не связан с Tavernlight Games. Игровые ресурсы принадлежат Tavernlight Games.',
+    'footer.report-bug': 'Сообщить об ошибке',
+
+    // Lightbox
+    'lightbox.click-details': 'Нажмите для подробностей',
+    'lightbox.previous': '← Назад',
+    'lightbox.next': 'Далее →'
+  },
+
+  uk: {
+    // Navigation
+    'nav.features': 'Функції',
+    'nav.download': 'Завантажити',
+    'nav.security': 'Безпека',
+    'nav.github': 'GitHub',
+
+    // Hero
+    'hero.tagline': 'Відстежуй все. Грай розумніше.',
+    'hero.description': 'Завжди поверх вікон оверлей для відстеження косметики, трофеїв, торгових пакетів, фермерства та багато іншого.',
+    'hero.download': 'Завантажити для Windows',
+    'hero.demo': 'Спробувати демо',
+    'hero.see-features': 'Переглянути функції',
+
+    // Features
+    'features.title': 'Функції',
+    'features.cosmetics.title': 'Трекер косметики',
+    'features.cosmetics.desc': 'Відстежуйте прогрес колекції в усіх категоріях косметики. Дивіться що у вас є, чого не вистачає та відсоток завершення.',
+    'features.trophies.title': 'Трекер трофеїв',
+    'features.trophies.desc': 'Слідкуйте за досягненнями трофеїв. Фільтруйте за категорією, шукайте конкретні трофеї та відстежуйте прогрес полювання.',
+    'features.tradepacks.title': 'Калькулятор торгових пакетів',
+    'features.tradepacks.desc': 'Оптимізуйте торгові маршрути. Розраховуйте прибуток, порівнюйте напрямки та знаходьте найкращі угоди.',
+    'features.farming.title': 'Картки фермерства',
+    'features.farming.desc': 'Інтерактивні посібники з культур та тварин. Дивіться час росту, врожайність та оптимальні стратегії.',
+    'features.land.title': 'Симулятор землі',
+    'features.land.desc': 'Плануйте розташування будівель до будівництва. Тестуйте різні конфігурації та оптимізуйте використання землі.',
+    'features.overlay.title': 'Режим оверлею',
+    'features.overlay.desc': 'Прозоре вікно поверх усіх вікон, що працює під час гри. Підтримка наскрізних кліків, щоб не заважати грі.',
+
+    // Download
+    'download.title': 'Завантажити',
+    'download.recommended': 'Рекомендовано',
+    'download.windows': 'Інсталятор Windows',
+    'download.portable': 'Портативний ZIP',
+    'download.installer-btn': 'Завантажити інсталятор',
+    'download.zip-btn': 'Завантажити ZIP',
+    'download.auto-updates': 'Включає автооновлення',
+    'download.no-install': 'Встановлення не потрібно',
+    'download.note': 'Потрібна Windows 10 або новіша. Версія з інсталятором автоматично завантажує та встановлює оновлення.',
+
+    // Requirements
+    'requirements.title': 'Системні вимоги',
+    'requirements.os': 'ОС:',
+    'requirements.ram': 'ОЗП:',
+    'requirements.storage': "Пам'ять:",
+    'requirements.display': 'Дисплей:',
+
+    // Security
+    'security.title': 'Безпека та прозорість',
+    'security.intro': 'Кожен реліз автоматично перевіряється для вашої безпеки.',
+    'security.verify.title': 'Як перевірити завантаження',
+    'security.verify.step1': 'Перевірка підпису:',
+    'security.verify.step1.detail': 'ПКМ на .exe → Властивості → Цифрові підписи → Має показати "therealcloudvikinggmail.onmicrosoft.com"',
+    'security.verify.step2': 'VirusTotal:',
+    'security.verify.step2.detail': 'Кожен реліз містить посилання на результати сканування в примітках до релізу',
+    'security.verify.step3': 'Перевірка хешу:',
+    'security.verify.step3.detail': 'Порівняйте SHA256 хеш з приміток до релізу',
+
+    // Footer
+    'footer.made-by': 'RavenHUD — це спільнотний проект, створений',
+    'footer.disclaimer': "Не пов'язаний з Tavernlight Games. Ігрові ресурси належать Tavernlight Games.",
+    'footer.report-bug': 'Повідомити про помилку',
+
+    // Lightbox
+    'lightbox.click-details': 'Натисніть для деталей',
+    'lightbox.previous': '← Назад',
+    'lightbox.next': 'Далі →'
   }
 };
 
@@ -635,6 +773,8 @@ const languageConfig = {
   de: { code: 'de', name: 'Deutsch', flag: 'https://flagcdn.com/w20/de.png' },
   nl: { code: 'nl', name: 'Nederlands', flag: 'https://flagcdn.com/w20/nl.png' },
   tr: { code: 'tr', name: 'Türkçe', flag: 'https://flagcdn.com/w20/tr.png' },
+  ru: { code: 'ru', name: 'Русский', flag: 'https://flagcdn.com/w20/ru.png' },
+  uk: { code: 'uk', name: 'Українська', flag: 'https://flagcdn.com/w20/ua.png' },
   id: { code: 'id', name: 'Indonesia', flag: 'https://flagcdn.com/w20/id.png' },
   vi: { code: 'vi', name: 'Tiếng Việt', flag: 'https://flagcdn.com/w20/vn.png' }
 };
