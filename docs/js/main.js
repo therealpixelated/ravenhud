@@ -342,6 +342,40 @@ function initFeatureLightbox() {
 
 
 /**
+ * Mobile menu toggle functionality
+ */
+function initMobileMenu() {
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.getElementById('nav-links');
+  if (!menuBtn || !navLinks) return;
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+    menuBtn.textContent = isOpen ? 'Close' : 'Menu';
+  });
+
+  // Close menu when clicking a link
+  navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = 'Menu';
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = 'Menu';
+      menuBtn.focus();
+    }
+  });
+}
+
+/**
  * Initialize the page
  */
 async function init() {
@@ -351,6 +385,7 @@ async function init() {
   initLazyLoading();
   initHeaderScroll();
   initFeatureLightbox();
+  initMobileMenu();
 
   // Fetch and display release info
   const release = await fetchLatestRelease();
