@@ -86,10 +86,20 @@ jobs:
                   "name": "📋 Release Notes",
                   "value": "[View on GitHub](${RELEASE_URL})",
                   "inline": true
+                },
+                {
+                  "name": "🌐 Website",
+                  "value": "[ravenhud.com](https://ravenhud.com)",
+                  "inline": true
+                },
+                {
+                  "name": "𝕏 Follow",
+                  "value": "[@realRavenHud](https://x.com/realRavenHud)",
+                  "inline": true
                 }
               ],
               "footer": {
-                "text": "RavenHUD • Ravenquest Companion"
+                "text": "ravenhud.com"
               },
               "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
             }]
