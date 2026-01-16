@@ -8,7 +8,8 @@ let landTypesCache = null;
 let landDataCache = null;
 let communityLayoutsCache = null;
 let nftLayoutsCache = null;
-let nftShapesCache = null;
+let landShapesCache = null;
+let houseShapesCache = null;
 
 // In-memory storage for layouts (session only)
 let savedLayouts = [];
@@ -25,20 +26,39 @@ function generateId() {
 }
 
 /**
- * Load NFT shapes from JSON
+ * Load land shapes from JSON
  */
-async function loadNFTShapes() {
-  if (nftShapesCache) return nftShapesCache;
+async function loadLandShapes() {
+  if (landShapesCache) return landShapesCache;
 
   try {
-    const response = await fetch('data/land-shapes-nft.json');
+    const response = await fetch('data/land-shapes.json');
     if (response.ok) {
-      nftShapesCache = await response.json();
-      console.log('[LandHandlers] Loaded NFT shapes');
-      return nftShapesCache;
+      landShapesCache = await response.json();
+      console.log('[LandHandlers] Loaded land shapes');
+      return landShapesCache;
     }
   } catch (err) {
-    console.warn('[LandHandlers] NFT shapes not found, using defaults');
+    console.warn('[LandHandlers] Land shapes not found');
+  }
+  return null;
+}
+
+/**
+ * Load house shapes from JSON
+ */
+async function loadHouseShapes() {
+  if (houseShapesCache) return houseShapesCache;
+
+  try {
+    const response = await fetch('data/house-shapes.json');
+    if (response.ok) {
+      houseShapesCache = await response.json();
+      console.log('[LandHandlers] Loaded house shapes');
+      return houseShapesCache;
+    }
+  } catch (err) {
+    console.warn('[LandHandlers] House shapes not found');
   }
   return null;
 }
@@ -49,150 +69,38 @@ async function loadNFTShapes() {
 async function getLandTypes() {
   if (landTypesCache) return landTypesCache;
 
-  const nftShapes = await loadNFTShapes();
+  const landShapes = await loadLandShapes();
+  const houseShapes = await loadHouseShapes();
 
-  const LAND_TYPES = {
-    SMALL_COMMUNITY: {
-      name: 'Small Community Land',
-      width: 8,
-      height: 7,
-      shape: 'rectangle',
-      getTiles: () => {
-        const tiles = [];
-        for (let y = 0; y < 7; y++) {
-          for (let x = 0; x < 8; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        return tiles;
-      }
-    },
-    MEDIUM_COMMUNITY: {
-      name: 'Medium Community Land',
-      width: 11,
-      height: 11,
-      shape: 'L-shaped',
-      getTiles: () => {
-        const tiles = [];
-        // Top section: 11 wide x 6 tall
-        for (let y = 0; y < 6; y++) {
-          for (let x = 0; x < 11; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        // Bottom extension: 5 wide x 5 tall
-        for (let y = 6; y < 11; y++) {
-          for (let x = 0; x < 5; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        return tiles;
-      }
-    },
-    LARGE_COMMUNITY: {
-      name: 'Large Community Land',
-      width: 14,
-      height: 13,
-      shape: 'stepped',
-      getTiles: () => {
-        const tiles = [];
-        // Top section: 14 wide x 5 tall
-        for (let y = 0; y < 5; y++) {
-          for (let x = 0; x < 14; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        // Middle section: 8 wide x 4 tall (columns 6-13)
-        for (let y = 5; y < 9; y++) {
-          for (let x = 6; x < 14; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        // Bottom section: 7 wide x 4 tall (columns 7-13)
-        for (let y = 9; y < 13; y++) {
-          for (let x = 7; x < 14; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        return tiles;
-      }
-    },
-    NFT_SMALL: {
-      name: 'NFT Small Land',
-      width: 10,
-      height: 10,
-      shape: 'rectangle',
-      hasHouse: true,
-      houseTiles: nftShapes?.NFT_SMALL?.tiles?.house || [],
-      houseDoorTiles: nftShapes?.NFT_SMALL?.tiles?.house_door || [],
-      doorClearanceTiles: nftShapes?.NFT_SMALL?.tiles?.door_clearance || [],
-      getTiles: () => {
-        const tiles = [];
-        for (let y = 0; y < 10; y++) {
-          for (let x = 0; x < 10; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        return tiles;
-      }
-    },
-    NFT_MEDIUM: {
-      name: 'NFT Medium Land',
-      width: 12,
-      height: 12,
-      shape: 'rectangle',
-      hasHouse: true,
-      houseTiles: nftShapes?.NFT_MEDIUM?.tiles?.house || [],
-      houseDoorTiles: nftShapes?.NFT_MEDIUM?.tiles?.house_door || [],
-      doorClearanceTiles: nftShapes?.NFT_MEDIUM?.tiles?.door_clearance || [],
-      getTiles: () => {
-        const tiles = [];
-        for (let y = 0; y < 12; y++) {
-          for (let x = 0; x < 12; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        return tiles;
-      }
-    },
-    NFT_LARGE: {
-      name: 'NFT Large Land',
-      width: 15,
-      height: 15,
-      shape: 'rectangle',
-      hasHouse: true,
-      houseTiles: nftShapes?.NFT_LARGE?.tiles?.house || [],
-      houseDoorTiles: nftShapes?.NFT_LARGE?.tiles?.house_door || [],
-      doorClearanceTiles: nftShapes?.NFT_LARGE?.tiles?.door_clearance || [],
-      getTiles: () => {
-        const tiles = [];
-        for (let y = 0; y < 15; y++) {
-          for (let x = 0; x < 15; x++) {
-            tiles.push({ x, y });
-          }
-        }
-        return tiles;
-      }
-    }
-  };
+  if (!landShapes) {
+    console.error('[LandHandlers] Failed to load land shapes');
+    return [];
+  }
 
   // Convert to array format expected by components
-  landTypesCache = Object.keys(LAND_TYPES).map((key) => {
-    const landType = LAND_TYPES[key];
+  landTypesCache = Object.keys(landShapes).map((key) => {
+    const landData = landShapes[key];
+    const houseData = houseShapes?.[key];
+
     const result = {
       id: key,
-      name: landType.name,
-      width: landType.width,
-      height: landType.height,
-      shape: landType.shape,
-      hasHouse: landType.hasHouse || false,
-      tiles: landType.getTiles()
+      name: landData.name,
+      width: landData.width,
+      height: landData.height,
+      shape: landData.shape || 'rectangle',
+      hasHouse: landData.hasHouse || false,
+      farmMultiplier: landData.farmMultiplier || 1,
+      tileCount: landData.tileCount,
+      tiles: landData.tiles || []
     };
-    if (landType.hasHouse) {
-      result.houseTiles = landType.houseTiles || [];
-      result.houseDoorTiles = landType.houseDoorTiles || [];
-      result.doorClearanceTiles = landType.doorClearanceTiles || [];
+
+    // Add house data if this land type has a house
+    if (landData.hasHouse && houseData) {
+      result.houseTiles = houseData.tiles?.house || [];
+      result.houseDoorTiles = houseData.tiles?.door || [];
+      result.doorClearanceTiles = houseData.tiles?.clearance || [];
     }
+
     return result;
   });
 

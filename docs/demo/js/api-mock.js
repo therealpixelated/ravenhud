@@ -38,7 +38,9 @@ let mockOwnedLands = {
     LARGE_COMMUNITY: 0,
     NFT_SMALL: 0,
     NFT_MEDIUM: 0,
-    NFT_LARGE: 0
+    NFT_LARGE: 0,
+    NFT_STRONGHOLD: 0,
+    NFT_FORT: 0
   },
   totalTiles: { total: 0 }
 };
@@ -51,7 +53,9 @@ function calculateTotalTiles(ownedLands) {
     LARGE_COMMUNITY: 130,
     NFT_SMALL: 100,
     NFT_MEDIUM: 144,
-    NFT_LARGE: 225
+    NFT_LARGE: 225,
+    NFT_STRONGHOLD: 484,
+    NFT_FORT: 900
   };
   let total = 0;
   for (const [type, count] of Object.entries(ownedLands)) {
@@ -379,7 +383,8 @@ window.electronAPI = {
     const landsList = [];
     const LAND_TILES = {
       SMALL_COMMUNITY: 56, MEDIUM_COMMUNITY: 91, LARGE_COMMUNITY: 130,
-      NFT_SMALL: 100, NFT_MEDIUM: 144, NFT_LARGE: 225
+      NFT_SMALL: 100, NFT_MEDIUM: 144, NFT_LARGE: 225,
+      NFT_STRONGHOLD: 484, NFT_FORT: 900
     };
 
     Object.entries(ownedLands).forEach(([landType, count]) => {

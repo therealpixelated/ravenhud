@@ -509,7 +509,9 @@ const LAND_ORDER = [
   'LARGE_COMMUNITY',
   'NFT_SMALL',
   'NFT_MEDIUM',
-  'NFT_LARGE'
+  'NFT_LARGE',
+  'NFT_STRONGHOLD',
+  'NFT_FORT'
 ];
 
 /**
