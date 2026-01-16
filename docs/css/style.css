@@ -585,6 +585,17 @@ body {
   font-size: var(--font-xs);
 }
 
+.download-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: stretch;
+}
+
+.download-buttons .btn-secondary {
+  padding: 14px 16px;
+  font-size: var(--font-sm);
+}
+
 .download-feature {
   color: var(--text-muted);
   font-size: var(--font-xs);

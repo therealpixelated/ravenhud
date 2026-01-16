@@ -84,6 +84,9 @@ function updateUI(release) {
   const portableFilename = document.getElementById('portable-filename');
   const portableSize = document.getElementById('portable-size');
 
+  // Installer ZIP button (links to portable ZIP from installer card)
+  const installerZipBtn = document.getElementById('installer-zip-btn');
+
   if (!release) {
     // No release found - use placeholder
     const placeholderText = 'First release coming soon!';
@@ -100,10 +103,15 @@ function updateUI(release) {
     asset.name.endsWith('.exe') && asset.name.includes('Setup')
   ) || null;
 
+  // Find installer ZIP (Setup in ZIP form)
+  const installerZipAsset = assets.find(asset =>
+    asset.name.endsWith('.zip') && asset.name.includes('Setup')
+  ) || null;
+
   // Find portable (.zip file)
   const portableAsset = assets.find(asset =>
     asset.name.endsWith('.zip') && asset.name.includes('portable')
-  ) || assets.find(asset => asset.name.endsWith('.zip')) || null;
+  ) || null;
 
   // Update version info (hero and download section)
   const relativeDate = formatRelativeDate(release.published_at);
@@ -118,6 +126,13 @@ function updateUI(release) {
     if (installerSize) installerSize.textContent = formatFileSize(installerAsset.size);
   } else if (installerBtn) {
     installerBtn.href = release.html_url;
+  }
+
+  // Update installer ZIP button
+  if (installerZipAsset) {
+    if (installerZipBtn) installerZipBtn.href = installerZipAsset.browser_download_url;
+  } else if (installerZipBtn) {
+    installerZipBtn.href = release.html_url;
   }
 
   // Update portable download
