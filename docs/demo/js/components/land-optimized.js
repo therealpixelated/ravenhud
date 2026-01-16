@@ -233,7 +233,7 @@ class LandOptimized {
     }
 
     // Check if this is an NFT land with pre-computed layouts
-    const nftLandIds = ['NFT_SMALL', 'NFT_MEDIUM', 'NFT_LARGE'];
+    const nftLandIds = ['NFT_SMALL', 'NFT_MEDIUM', 'NFT_LARGE', 'NFT_STRONGHOLD', 'NFT_FORT'];
     if (nftLandIds.includes(landType)) {
       this.isNFTLand = true;
       try {

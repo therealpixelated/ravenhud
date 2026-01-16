@@ -93,7 +93,9 @@ async function renderLandsSummary() {
       LARGE_COMMUNITY: 'Large Community',
       NFT_SMALL: 'NFT Small',
       NFT_MEDIUM: 'NFT Medium',
-      NFT_LARGE: 'NFT Large'
+      NFT_LARGE: 'NFT Large',
+      NFT_STRONGHOLD: 'NFT Stronghold',
+      NFT_FORT: 'NFT Fort'
     };
 
     let landsHtml = '<div class="lands-summary-section">';

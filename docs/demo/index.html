@@ -254,6 +254,20 @@
                   <span class="tile-count" id="nftLargeTiles">225 tiles each</span>
                 </div>
               </div>
+              <div class="land-input-row">
+                <label for="ownNftStronghold">Stronghold (22x22)</label>
+                <div class="input-with-tiles">
+                  <input type="number" id="ownNftStronghold" min="0" max="7" value="0" step="1" aria-describedby="nftStrongholdTiles">
+                  <span class="tile-count" id="nftStrongholdTiles">484 tiles each</span>
+                </div>
+              </div>
+              <div class="land-input-row">
+                <label for="ownNftFort">Fort (30x30)</label>
+                <div class="input-with-tiles">
+                  <input type="number" id="ownNftFort" min="0" max="7" value="0" step="1" aria-describedby="nftFortTiles">
+                  <span class="tile-count" id="nftFortTiles">900 tiles each</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -272,6 +286,8 @@
                 <option value="NFT_SMALL">NFT Small (10x10, with house)</option>
                 <option value="NFT_MEDIUM">NFT Medium (12x12, with house)</option>
                 <option value="NFT_LARGE">NFT Large (15x15, with house)</option>
+                <option value="NFT_STRONGHOLD">NFT Stronghold (22x22, with house)</option>
+                <option value="NFT_FORT">NFT Fort (30x30, with house)</option>
               </optgroup>
             </select>
           </div>

@@ -421,10 +421,14 @@ async function initOwnedLandsConfig() {
     const nftSmall = document.getElementById('ownNftSmall');
     const nftMedium = document.getElementById('ownNftMedium');
     const nftLarge = document.getElementById('ownNftLarge');
+    const nftStronghold = document.getElementById('ownNftStronghold');
+    const nftFort = document.getElementById('ownNftFort');
 
     if (nftSmall) nftSmall.value = ownedLandsData.ownedLands?.NFT_SMALL || 0;
     if (nftMedium) nftMedium.value = ownedLandsData.ownedLands?.NFT_MEDIUM || 0;
     if (nftLarge) nftLarge.value = ownedLandsData.ownedLands?.NFT_LARGE || 0;
+    if (nftStronghold) nftStronghold.value = ownedLandsData.ownedLands?.NFT_STRONGHOLD || 0;
+    if (nftFort) nftFort.value = ownedLandsData.ownedLands?.NFT_FORT || 0;
 
     updateNftLandCount();
     updateTotalOwnedTiles();
@@ -439,7 +443,7 @@ async function initOwnedLandsConfig() {
  */
 function setupOwnedLandsListeners() {
   const communityInputs = ['ownSmallCommunity', 'ownMediumCommunity', 'ownLargeCommunity'];
-  const nftInputs = ['ownNftSmall', 'ownNftMedium', 'ownNftLarge'];
+  const nftInputs = ['ownNftSmall', 'ownNftMedium', 'ownNftLarge', 'ownNftStronghold', 'ownNftFort'];
 
   // Community land checkboxes
   communityInputs.forEach((id) => {
@@ -478,7 +482,9 @@ async function saveOwnedLands() {
     LARGE_COMMUNITY: document.getElementById('ownLargeCommunity')?.checked ? 1 : 0,
     NFT_SMALL: parseInt(document.getElementById('ownNftSmall')?.value, 10) || 0,
     NFT_MEDIUM: parseInt(document.getElementById('ownNftMedium')?.value, 10) || 0,
-    NFT_LARGE: parseInt(document.getElementById('ownNftLarge')?.value, 10) || 0
+    NFT_LARGE: parseInt(document.getElementById('ownNftLarge')?.value, 10) || 0,
+    NFT_STRONGHOLD: parseInt(document.getElementById('ownNftStronghold')?.value, 10) || 0,
+    NFT_FORT: parseInt(document.getElementById('ownNftFort')?.value, 10) || 0
   };
 
   try {
@@ -501,7 +507,9 @@ function getTotalNftLands() {
   const small = parseInt(document.getElementById('ownNftSmall')?.value, 10) || 0;
   const medium = parseInt(document.getElementById('ownNftMedium')?.value, 10) || 0;
   const large = parseInt(document.getElementById('ownNftLarge')?.value, 10) || 0;
-  return small + medium + large;
+  const stronghold = parseInt(document.getElementById('ownNftStronghold')?.value, 10) || 0;
+  const fort = parseInt(document.getElementById('ownNftFort')?.value, 10) || 0;
+  return small + medium + large + stronghold + fort;
 }
 
 /**
@@ -518,16 +526,22 @@ function updateNftLandCount() {
   const small = parseInt(document.getElementById('ownNftSmall')?.value, 10) || 0;
   const medium = parseInt(document.getElementById('ownNftMedium')?.value, 10) || 0;
   const large = parseInt(document.getElementById('ownNftLarge')?.value, 10) || 0;
+  const stronghold = parseInt(document.getElementById('ownNftStronghold')?.value, 10) || 0;
+  const fort = parseInt(document.getElementById('ownNftFort')?.value, 10) || 0;
 
   const smallEl = document.getElementById('ownNftSmall');
   const mediumEl = document.getElementById('ownNftMedium');
   const largeEl = document.getElementById('ownNftLarge');
+  const strongholdEl = document.getElementById('ownNftStronghold');
+  const fortEl = document.getElementById('ownNftFort');
 
   // Each input's max = current value + remaining slots
   const remaining = MAX_NFT_LANDS - total;
   if (smallEl) smallEl.max = small + remaining;
   if (mediumEl) mediumEl.max = medium + remaining;
   if (largeEl) largeEl.max = large + remaining;
+  if (strongholdEl) strongholdEl.max = stronghold + remaining;
+  if (fortEl) fortEl.max = fort + remaining;
 }
 
 /**
@@ -540,7 +554,9 @@ function updateTotalOwnedTiles() {
     LARGE_COMMUNITY: 130,
     NFT_SMALL: 100,
     NFT_MEDIUM: 144,
-    NFT_LARGE: 225
+    NFT_LARGE: 225,
+    NFT_STRONGHOLD: 484,
+    NFT_FORT: 900
   };
 
   let total = 0;
@@ -550,6 +566,8 @@ function updateTotalOwnedTiles() {
   total += (parseInt(document.getElementById('ownNftSmall')?.value, 10) || 0) * tiles.NFT_SMALL;
   total += (parseInt(document.getElementById('ownNftMedium')?.value, 10) || 0) * tiles.NFT_MEDIUM;
   total += (parseInt(document.getElementById('ownNftLarge')?.value, 10) || 0) * tiles.NFT_LARGE;
+  total += (parseInt(document.getElementById('ownNftStronghold')?.value, 10) || 0) * tiles.NFT_STRONGHOLD;
+  total += (parseInt(document.getElementById('ownNftFort')?.value, 10) || 0) * tiles.NFT_FORT;
 
   const totalEl = document.getElementById('totalOwnedTiles');
   if (totalEl) {
