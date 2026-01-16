@@ -3,7 +3,7 @@
  * Fetches release info from GitHub API and updates download links
  */
 
-const GITHUB_REPO = 'Pix-Elated/ravenhud';
+const GITHUB_REPO = 'Pix-Elated/ravenquest-companion';
 const GITHUB_API = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
 
 /**
